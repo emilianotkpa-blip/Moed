@@ -1,383 +1,107 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MOED | Wedding Planning</title>
-<meta name="description" content="Planeación y coordinación de bodas de alto nivel en Valladolid, Yucatán y el sureste mexicano. Más de 12 años creando momentos que perduran para siempre." />
-<meta name="theme-color" content="#C9A86A" />
-<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-<link rel="canonical" href="https://moed.mx/" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="MOED | Wedding Planning" />
-<meta property="og:description" content="Bodas de alto nivel en el sureste mexicano. Más de 12 años y 300+ bodas." />
-<meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=80" />
-<link rel="preconnect" href="https://images.unsplash.com" />
-<link rel="stylesheet" href="assets/css/main.css" />
-</head>
-<body class="bg-cream text-brand-dark font-sans antialiased">
-
-<!-- ══ NAV ══ -->
-<header id="main-nav" data-scrolled="false" class="fixed top-0 left-0 right-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <nav class="flex items-center justify-between h-20" aria-label="Navegación principal">
-      <a href="" aria-label="MOED Wedding Planning — Inicio" class="nav-logo font-serif text-2xl tracking-widest transition-colors duration-300">MOED</a>
-      <ul class="hidden md:flex items-center gap-8" role="list">
-        <li><a href="" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 active" aria-current="page">Inicio</a></li>
-        <li><a href="servicios/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold">Servicios</a></li>
-        <li><a href="portafolio/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold">Portafolio</a></li>
-        <li><a href="equipo/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold">Equipo</a></li>
-        <li><a href="contacto/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold">Contacto</a></li>
-      </ul>
-      <a href="contacto/" class="nav-cta hidden md:inline-block px-6 py-2.5 border text-xs font-sans uppercase tracking-widest transition-all duration-300">Conversemos</a>
-      <button id="menu-btn" class="md:hidden p-2 flex flex-col gap-[5px]" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-        <span class="hamburger-bar block w-6 h-px transition-all duration-300 origin-center"></span>
-        <span class="hamburger-bar block w-6 h-px transition-all duration-300"></span>
-        <span class="hamburger-bar block w-6 h-px transition-all duration-300 origin-center"></span>
-      </button>
-    </nav>
-  </div>
-  <div id="mobile-menu" role="dialog" aria-label="Menú móvil" class="hidden md:hidden bg-cream border-t border-brand-border">
-    <ul class="flex flex-col py-4 px-6" role="list">
-      <li><a href="" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Inicio</a></li>
-      <li><a href="servicios/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Servicios</a></li>
-      <li><a href="portafolio/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Portafolio</a></li>
-      <li><a href="equipo/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Equipo</a></li>
-      <li><a href="contacto/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Contacto</a></li>
-      <li class="pt-5 pb-2"><a href="contacto/" class="block text-center btn-primary">Conversemos</a></li>
-    </ul>
-  </div>
-</header>
-
-<!-- ══ HERO ══ -->
-<section class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
-  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&auto=format&fit=crop&q=85" alt="Boda elegante en hacienda del sureste mexicano" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover hero-kenburns" />
-  <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/55"></div>
-  <div class="relative z-10 px-6 max-w-3xl mx-auto">
-    <span class="block text-white/70 text-xs font-sans uppercase tracking-widest mb-6">Valladolid, Yucatán · México</span>
-    <h1 class="font-serif text-5xl md:text-7xl text-white leading-none tracking-wide mb-6">Diseñamos momentos<br><em class="not-italic text-gold">que perduran</em><br>para siempre</h1>
-    <p class="text-white/80 text-base md:text-lg font-sans max-w-lg mx-auto leading-relaxed mb-10">Bodas de alto nivel y bodas destino en el sureste mexicano. Más de 12 años convirtiendo la visión de las parejas en experiencias extraordinarias.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="contacto/" class="btn-primary">Comencemos a soñar</a>
-      <a href="portafolio/" class="btn-ghost">Ver portafolio</a>
-    </div>
-  </div>
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50">
-    <span class="text-xs font-sans uppercase tracking-widest">Scroll</span>
-    <div class="w-px h-10 bg-white/30 animate-pulse"></div>
-  </div>
-</section>
-
-<!-- ══ SOBRE MOED ══ -->
-<section class="py-24 md:py-32">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-    <div class="reveal order-2 lg:order-1 relative">
-      <div class="img-rounded-soft overflow-hidden" style="background:#1a1410;">
-        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&auto=format&fit=crop&q=80" alt="Equipo MOED coordinando los detalles de una boda" width="800" height="960" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 hover:scale-105" />
-      </div>
-      <div class="absolute -bottom-5 -right-5 w-24 h-24 border-2 border-gold hidden lg:block"></div>
-    </div>
-    <div class="reveal reveal-delay-1 order-1 lg:order-2">
-      <span class="label">Sobre MOED</span>
-      <h2 class="section-title mb-6">Cada boda es una obra<br>única e irrepetible</h2>
-      <span class="gold-divider"></span>
-      <p class="text-brand-mid leading-relaxed mb-6">MOED nació en Valladolid con una convicción: la planeación de una boda debería ser tan memorable como la boda misma. Somos un equipo de mujeres apasionadas por los detalles, la estética y la logística impecable.</p>
-      <p class="text-brand-mid leading-relaxed mb-10">Trabajamos con parejas que valoran la elegancia discreta, el trato personalizado y la certeza de que su gran día estará en manos expertas. Desde Valladolid hasta la Riviera Maya, nuestro equipo conoce cada venue, cada proveedor, cada secreto del sureste.</p>
-      <a href="equipo/" class="btn-outline">Conocer al equipo</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CIFRAS ══ -->
-<section class="bg-olive py-20">
-  <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center text-white">
-    <div class="reveal reveal-delay-1"><p class="font-serif text-5xl md:text-6xl tracking-wider mb-2">300+</p><p class="text-white/70 text-xs font-sans uppercase tracking-widest">Bodas coordinadas</p></div>
-    <div class="reveal reveal-delay-2"><p class="font-serif text-5xl md:text-6xl tracking-wider mb-2">12</p><p class="text-white/70 text-xs font-sans uppercase tracking-widest">Años de experiencia</p></div>
-    <div class="reveal reveal-delay-3"><p class="font-serif text-5xl md:text-6xl tracking-wider mb-2">8</p><p class="text-white/70 text-xs font-sans uppercase tracking-widest">Destinos en México</p></div>
-  </div>
-</section>
-
-<!-- ══ BENGALA ══ -->
-<section id="candle-scroll" style="height:220vh;position:relative;">
-  <div id="candle-sticky" style="position:sticky;top:0;height:100vh;overflow:hidden;background:#080806;">
-    <canvas id="sp-canvas" style="position:absolute;inset:0;pointer-events:none;z-index:1;"></canvas>
-    <div id="c-text" style="position:absolute;top:18%;left:50%;transform:translateX(-50%);width:min(540px,86vw);text-align:center;opacity:0;pointer-events:none;z-index:10;background:rgba(8,8,6,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(201,168,106,.14);padding:2.2rem 2.5rem 2rem;">
-      <span style="display:block;font-family:'Jost',sans-serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:#C9A86A;margin-bottom:1.1rem;">Nuestra filosofía</span>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4.2vw,3rem);line-height:1.2;color:#F5F0E6;font-weight:300;margin-bottom:1.3rem;text-shadow:0 2px 24px rgba(0,0,0,.9),0 0 40px rgba(0,0,0,.7);">Como la llama de una bengala,<br>cada boda tiene su propio brillo</h2>
-      <div style="width:3rem;height:1px;background:#C9A86A;margin:0 auto 1.3rem;"></div>
-      <p style="font-family:'Jost',sans-serif;font-size:.85rem;color:#A8A296;line-height:1.85;max-width:400px;margin:0 auto;text-shadow:0 1px 12px rgba(0,0,0,.8);">Cuidamos cada detalle con la misma dedicación con que se cuida una chispa especial. Así garantizamos que el brillo de su celebración nunca se apague.</p>
-    </div>
-    <div id="c-hint" style="position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(245,240,230,.3);z-index:10;">
-      <span style="font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;">Scroll</span>
-      <div style="width:1px;height:2.5rem;background:linear-gradient(to bottom,rgba(201,168,106,.45),transparent);animation:sp-pulse 2s ease-in-out infinite;"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SERVICIOS ══ -->
-<section class="py-24 md:py-32">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="text-center mb-16 reveal">
-      <span class="label">Lo que hacemos</span>
-      <h2 class="section-title">Nuestros servicios</h2>
-      <span class="gold-divider mx-auto"></span>
-      <p class="text-brand-mid max-w-xl mx-auto mt-4 text-sm leading-relaxed">Cada pareja es diferente. Por eso ofrecemos opciones de servicio que se adaptan a su visión, su destino y su ritmo.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Coordinación Integral -->
-      <article class="reveal reveal-delay-1 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius:14px;">
-        <div class="img-rounded aspect-[4/3]" style="border-radius:14px 14px 0 0;">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Mesa decorada con flores: coordinación integral" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        </div>
-        <div class="flex flex-col flex-1 p-8">
-          <span class="label">Tu boda perfecta, de principio a fin</span>
-          <h3 class="font-serif text-2xl mb-4">Coordinación Integral</h3>
-          <p class="text-brand-mid text-sm leading-relaxed mb-6">Nuestro servicio más completo: te acompañamos desde la primera visión hasta el último baile. Gestionamos cada proveedor, cada detalle logístico y cada emoción.</p>
-          <ul class="space-y-2 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Sesión inicial de visión y estética</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Búsqueda y selección de venue</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Gestión integral de proveedores</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Coordinación presencial el día de la boda</li>
-          </ul>
-          <a href="servicios/coordinacion-integral/" class="btn-outline self-start text-xs">Ver detalles</a>
-        </div>
-      </article>
-      <!-- Boda Destino -->
-      <article class="reveal reveal-delay-2 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius:14px;">
-        <div class="img-rounded aspect-[4/3]" style="border-radius:14px 14px 0 0;">
-          <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&auto=format&fit=crop&q=80" alt="Ceremonia en hacienda yucateca al atardecer" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        </div>
-        <div class="flex flex-col flex-1 p-8">
-          <span class="label">La magia del sureste mexicano como escenario</span>
-          <h3 class="font-serif text-2xl mb-4">Boda Destino</h3>
-          <p class="text-brand-mid text-sm leading-relaxed mb-6">Especialistas en bodas destino en Valladolid, Mérida, Riviera Maya y Bacalar. Conocemos los mejores espacios y manejamos cada aspecto logístico.</p>
-          <ul class="space-y-2 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Scouting de venues exclusivos</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Red certificada de proveedores locales</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Gestión de documentación civil y religiosa</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Servicio bilingüe español / inglés</li>
-          </ul>
-          <a href="servicios/boda-destino/" class="btn-outline self-start text-xs">Ver detalles</a>
-        </div>
-      </article>
-      <!-- Coordinación Personalizada -->
-      <article class="reveal reveal-delay-3 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius:14px;">
-        <div class="img-rounded aspect-[4/3]" style="border-radius:14px 14px 0 0;">
-          <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=600&auto=format&fit=crop&q=80" alt="Decoración artesanal en boda íntima" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        </div>
-        <div class="flex flex-col flex-1 p-8">
-          <span class="label">El apoyo exacto que tú necesitas</span>
-          <h3 class="font-serif text-2xl mb-4">Coordinación Personalizada</h3>
-          <p class="text-brand-mid text-sm leading-relaxed mb-6">Diseñamos un plan de servicio completamente a tu medida. Tú decides cuánto acompañamiento deseas; nosotras ponemos la experiencia.</p>
-          <ul class="space-y-2 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Diagnóstico inicial sin costo</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Plan de servicio modular a la medida</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Asesoría de diseño y estética</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Coordinación presencial el día del evento</li>
-          </ul>
-          <a href="servicios/coordinacion-personalizada/" class="btn-outline self-start text-xs">Ver detalles</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══ GALERÍA PREVIEW ══ -->
-<section class="py-24 md:py-28 bg-olive-50">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
-      <div><span class="label">Nuestro trabajo</span><h2 class="section-title">Portafolio</h2></div>
-      <a href="portafolio/" class="btn-outline mt-6 md:mt-0 self-start">Ver todo el portafolio</a>
-    </div>
-    <div class="columns-2 md:columns-3 gap-4 space-y-4">
-      <div class="reveal reveal-delay-1 break-inside-avoid overflow-hidden group"><a href="portafolio/"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700&auto=format&fit=crop&q=80" alt="Boda en hacienda yucateca" width="700" height="933" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105" /></a></div>
-      <div class="reveal reveal-delay-2 break-inside-avoid overflow-hidden group"><a href="portafolio/"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=700&auto=format&fit=crop&q=80" alt="Ceremonia en cenote natural" width="700" height="467" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105" /></a></div>
-      <div class="reveal reveal-delay-3 break-inside-avoid overflow-hidden group"><a href="portafolio/"><img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=700&auto=format&fit=crop&q=80" alt="Mesa de recepción decorada" width="700" height="525" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105" /></a></div>
-      <div class="reveal reveal-delay-1 break-inside-avoid overflow-hidden group"><a href="portafolio/"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700&auto=format&fit=crop&q=80" alt="Arco floral de ceremonia" width="700" height="1050" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105" /></a></div>
-      <div class="reveal reveal-delay-2 break-inside-avoid overflow-hidden group"><a href="portafolio/"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=700&auto=format&fit=crop&q=80" alt="Boda de playa al atardecer" width="700" height="467" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105" /></a></div>
-      <div class="reveal reveal-delay-3 break-inside-avoid overflow-hidden group"><a href="portafolio/"><img src="https://images.unsplash.com/photo-1464347601390-25e2842a37b7?w=700&auto=format&fit=crop&q=80" alt="Primera danza de los novios" width="700" height="467" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105" /></a></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ EQUIPO PREVIEW ══ -->
-<section class="py-24 md:py-32">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="text-center mb-16 reveal">
-      <span class="label">Las personas detrás de cada boda</span>
-      <h2 class="section-title">Nuestro equipo</h2>
-      <span class="gold-divider mx-auto"></span>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="reveal reveal-delay-1 text-center group">
-        <div class="img-arch aspect-[3/4] mb-4"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80" alt="Elena Dolara" width="300" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
-        <p class="font-serif text-base">Elena Dolara</p><p class="text-xs font-sans text-brand-mid uppercase tracking-wider mt-1">Fundadora & Directora Creativa</p>
-      </div>
-      <div class="reveal reveal-delay-2 text-center group">
-        <div class="img-arch aspect-[3/4] mb-4"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80" alt="Sofía Montero" width="300" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
-        <p class="font-serif text-base">Sofía Montero</p><p class="text-xs font-sans text-brand-mid uppercase tracking-wider mt-1">Coordinadora Senior de Eventos</p>
-      </div>
-      <div class="reveal reveal-delay-3 text-center group">
-        <div class="img-arch aspect-[3/4] mb-4"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&auto=format&fit=crop&q=80" alt="Valeria Reyes" width="300" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
-        <p class="font-serif text-base">Valeria Reyes</p><p class="text-xs font-sans text-brand-mid uppercase tracking-wider mt-1">Diseñadora Floral & Visual</p>
-      </div>
-      <div class="reveal reveal-delay-4 text-center group">
-        <div class="img-arch aspect-[3/4] mb-4"><img src="https://images.unsplash.com/photo-1614644147798-f8c0fc9da7f6?w=300&auto=format&fit=crop&q=80" alt="Camila Vargas" width="300" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
-        <p class="font-serif text-base">Camila Vargas</p><p class="text-xs font-sans text-brand-mid uppercase tracking-wider mt-1">Coordinadora de Proveedores</p>
-      </div>
-    </div>
-    <div class="text-center mt-12 reveal"><a href="equipo/" class="btn-outline">Conocer al equipo</a></div>
-  </div>
-</section>
-
-<!-- ══ MARQUEE ══ -->
-<div class="py-3 bg-cream-dark">
-  <div class="marquee-outer" style="--h:280px;--dur:40s;" role="presentation" aria-hidden="true">
-    <div class="marquee-track marquee-left">
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=420&h=280&auto=format&fit=crop&q=80" alt="Ana y Rodrigo, Hacienda Temozon" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=420&h=280&auto=format&fit=crop&q=80" alt="Camille y Marc, Cenote Dzitnup" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=420&h=280&auto=format&fit=crop&q=80" alt="Daniela y Ernesto, Casa de los Venados" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=420&h=280&auto=format&fit=crop&q=80" alt="Isabella y Lorenzo, Hacienda Sotuta" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=420&h=280&auto=format&fit=crop&q=80" alt="Mariana y Sebastián, Playa del Carmen" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1464347601390-25e2842a37b7?w=420&h=280&auto=format&fit=crop&q=80" alt="Valentina y Diego, Bacalar" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=420&h=280&auto=format&fit=crop&q=80" alt="Fernanda y Miguel, Ex-Convento Sisal" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=420&h=280&auto=format&fit=crop&q=80" alt="Sofía y Andrés, Mérida" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=420&h=280&auto=format&fit=crop&q=80" alt="Laura y Pablo, Tulum" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <!-- duplicado para loop perfecto -->
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1464347601390-25e2842a37b7?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-      <div class="marquee-item"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=420&h=280&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" /></div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ TESTIMONIOS ══ -->
-<section class="bg-olive/10 py-24">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-16 reveal">
-      <span class="label">Lo que dicen nuestras parejas</span>
-      <h2 class="section-title">Palabras que nos mueven</h2>
-      <span class="gold-divider mx-auto"></span>
-    </div>
-    <div class="relative overflow-hidden reveal reveal-delay-1" id="carousel-outer" aria-label="Testimonios de clientes" aria-live="polite">
-      <div class="carousel-track" id="carousel-track">
-        <div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="false" data-index="0">
-          <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div>
-          <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">"Confiar en MOED fue la mejor decisión que tomamos. Elena y su equipo convirtieron nuestra visión en algo que superó todos nuestros sueños. Llegamos a nuestra boda completamente tranquilos y presentes, sabiendo que cada detalle estaba en manos perfectas."</blockquote>
-          <div class="flex flex-col items-center gap-3">
-            <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=120&auto=format&fit=crop&q=80" alt="Ana & Rodrigo" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40" />
-            <div><p class="font-serif text-lg font-semibold">Ana & Rodrigo</p><p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1">Marzo 2024 · Hacienda Temozon, Valladolid</p></div>
-          </div>
-        </div>
-        <div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="true" data-index="1">
-          <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div>
-          <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">"As a French couple planning a destination wedding in Mexico, we were nervous about the logistics. MOED handled everything flawlessly — and the ceremony at the cenote was beyond magical. We could not have done it without them."</blockquote>
-          <div class="flex flex-col items-center gap-3">
-            <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=120&auto=format&fit=crop&q=80" alt="Camille & Marc" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40" />
-            <div><p class="font-serif text-lg font-semibold">Camille & Marc</p><p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1">Noviembre 2023 · Cenote Dzitnup, Yucatán</p></div>
-          </div>
-        </div>
-        <div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="true" data-index="2">
-          <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div>
-          <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">"Lo que más nos sorprendió fue el nivel de atención personalizada. No éramos un cliente más; éramos Dani y Ernes con nuestra historia única. Cada elemento de la boda nos reflejó a nosotros. MOED es simplemente extraordinario."</blockquote>
-          <div class="flex flex-col items-center gap-3">
-            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=120&auto=format&fit=crop&q=80" alt="Daniela & Ernesto" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40" />
-            <div><p class="font-serif text-lg font-semibold">Daniela & Ernesto</p><p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1">Enero 2024 · Casa de los Venados, Valladolid</p></div>
-          </div>
-        </div>
-        <div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="true" data-index="3">
-          <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div>
-          <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">"Sofía estuvo presente en absolutamente todo. Desde las 6 de la mañana hasta la última canción. Su energía, su profesionalismo y su sonrisa genuina hicieron que nuestro día fuera perfecto. Les recomendamos MOED con los ojos cerrados."</blockquote>
-          <div class="flex flex-col items-center gap-3">
-            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=120&auto=format&fit=crop&q=80" alt="Isabella & Lorenzo" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40" />
-            <div><p class="font-serif text-lg font-semibold">Isabella & Lorenzo</p><p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1">Febrero 2024 · Hacienda Sotuta de Peón, Yucatán</p></div>
-          </div>
-        </div>
-        <div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="true" data-index="4">
-          <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div>
-          <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">"Contraté solo la coordinación del día y fue lo más inteligente que hice. El equipo de MOED llegó, tomó el control y yo pude disfrutar mi boda como si fuera invitada. Cada momento estuvo lleno de paz y alegría. Gracias eternas."</blockquote>
-          <div class="flex flex-col items-center gap-3">
-            <div><p class="font-serif text-lg font-semibold">Mariana & Sebastián</p><p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1">Diciembre 2023 · Playa del Carmen, Quintana Roo</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flex items-center justify-center gap-6 mt-10">
-      <button id="carousel-prev" class="w-10 h-10 border border-olive text-olive flex items-center justify-center hover:bg-olive hover:text-white transition-colors" aria-label="Testimonio anterior">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="flex gap-2" role="tablist" aria-label="Selector de testimonio">
-        <button role="tab" aria-selected="true" aria-label="Testimonio 1" data-dot="0" class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-olive"></button>
-        <button role="tab" aria-selected="false" aria-label="Testimonio 2" data-dot="1" class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-brand-border"></button>
-        <button role="tab" aria-selected="false" aria-label="Testimonio 3" data-dot="2" class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-brand-border"></button>
-        <button role="tab" aria-selected="false" aria-label="Testimonio 4" data-dot="3" class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-brand-border"></button>
-        <button role="tab" aria-selected="false" aria-label="Testimonio 5" data-dot="4" class="carousel-dot w-2 h-2 rounded-full transition-all duration-300 bg-brand-border"></button>
-      </div>
-      <button id="carousel-next" class="w-10 h-10 border border-olive text-olive flex items-center justify-center hover:bg-olive hover:text-white transition-colors" aria-label="Siguiente testimonio">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CTA FINAL ══ -->
-<section class="relative py-32 overflow-hidden">
-  <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1600&auto=format&fit=crop&q=80" alt="Pareja feliz en boda destino" width="1600" height="900" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" data-parallax />
-  <div class="absolute inset-0 bg-black/55"></div>
-  <div class="relative z-10 text-center px-6 max-w-2xl mx-auto reveal">
-    <span class="label text-white/70">Tu historia comienza aquí</span>
-    <h2 class="font-serif text-4xl md:text-5xl text-white mb-6 leading-tight">¿Lista para comenzar a planear el día más especial de tu vida?</h2>
-    <span class="block w-12 h-px bg-gold mx-auto mb-8"></span>
-    <a href="contacto/" class="btn-ghost">Hablemos hoy</a>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
-<footer class="bg-cream text-brand-dark border-t border-brand-border">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div>
-      <a href="" class="font-serif text-3xl tracking-widest text-white hover:text-gold transition-colors">MOED</a>
-      <p class="mt-4 text-sm text-brand-light leading-relaxed max-w-xs">Diseñamos momentos que perduran para siempre.<br>Valladolid, Yucatán · México</p>
-      <div class="flex gap-4 mt-6">
-        <a href="https://instagram.com/moed.wedding" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-brand-light hover:text-gold transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        <a href="https://facebook.com/moedwedding" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-brand-light hover:text-gold transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-        <a href="https://pinterest.com/moedwedding" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="text-brand-light hover:text-gold transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
-      </div>
-    </div>
-    <div>
-      <h3 class="text-xs font-sans uppercase tracking-widest text-brand-light mb-6">Navegación</h3>
-      <ul class="space-y-3">
-        <li><a href="" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Inicio</a></li>
-        <li><a href="servicios/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Servicios</a></li>
-        <li><a href="portafolio/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Portafolio</a></li>
-        <li><a href="equipo/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Equipo</a></li>
-        <li><a href="contacto/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Contacto</a></li>
-        <li><a href="landing/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Promo especial</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="text-xs font-sans uppercase tracking-widest text-brand-light mb-6">Contacto</h3>
-      <address class="not-italic space-y-3">
-        <p class="text-sm text-brand-light leading-relaxed">Calle 41 #230, Centro<br>Valladolid, Yucatán 97780<br>México</p>
-        <p><a href="tel:+529851002030" class="text-sm text-brand-light hover:text-white transition-colors">+52 985 100 2030</a></p>
-        <p><a href="mailto:edolara@gmail.com" class="text-sm text-brand-light hover:text-white transition-colors">edolara@gmail.com</a></p>
-      </address>
-    </div>
-  </div>
-  <div class="border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-xs text-brand-light">© 2026 MOED Wedding Planning. Todos los derechos reservados.</p>
-      <p class="text-xs text-brand-light">Valladolid, Yucatán · México</p>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+﻿<!DOCTYPE html><html lang="es"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Primary --><title>MOED | Wedding Planning</title><meta name="description" content="Planeación y coordinación de bodas de alto nivel en Valladolid, Yucatán y el sureste mexicano. Más de 12 años creando momentos que perduran para siempre."><link rel="canonical" href="https://moed.mx/"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://moed.mx/"><meta property="og:title" content="MOED | Wedding Planning"><meta property="og:description" content="Planeación y coordinación de bodas de alto nivel en Valladolid, Yucatán y el sureste mexicano. Más de 12 años creando momentos que perduran para siempre."><meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=80"><meta property="og:locale" content="es_MX"><meta property="og:site_name" content="MOED Wedding Planning"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="MOED | Wedding Planning"><meta name="twitter:description" content="Planeación y coordinación de bodas de alto nivel en Valladolid, Yucatán y el sureste mexicano. Más de 12 años creando momentos que perduran para siempre."><meta name="twitter:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=80"><!-- Favicon --><link rel="icon" type="image/svg+xml" href="favicon.svg"><meta name="theme-color" content="#C9A86A"><!-- Sitemap --><link rel="sitemap" href="sitemap.xml"><!-- Structured data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"MOED Wedding Planning","description":"Planeación y coordinación de bodas en Valladolid, Yucatán. Bodas destino en el sureste mexicano.","url":"https://moed.mx","logo":"https://moed.mx/favicon.svg","image":"https://moed.mx/og-image.jpg","telephone":["+52 985 100 2030","+52 985 100 2031"],"email":"edolara@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Calle 41 #230","addressLocality":"Valladolid","addressRegion":"Yucatán","postalCode":"97780","addressCountry":"MX"},"geo":{"@type":"GeoCoordinates","latitude":"20.6890","longitude":"-88.2003"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}],"sameAs":["https://instagram.com/moed.wedding","https://facebook.com/moedwedding","https://pinterest.com/moedwedding"],"priceRange":"$$$$","servesCuisine":null,"areaServed":["Valladolid, Yucatán","Mérida, Yucatán","Riviera Maya","Bacalar"]}</script><link rel="stylesheet" href="assets/css/main.css">
+<style>.marquee-outer[data-astro-cid-y63m42oh]{overflow:hidden;height:var(--h)}.marquee-track[data-astro-cid-y63m42oh]{display:flex;align-items:stretch;gap:10px;width:-moz-max-content;width:max-content;will-change:transform}.marquee-left[data-astro-cid-y63m42oh]{animation:mq-left var(--dur) linear infinite}.marquee-right[data-astro-cid-y63m42oh]{animation:mq-right var(--dur) linear infinite}.marquee-outer[data-astro-cid-y63m42oh]:hover .marquee-track[data-astro-cid-y63m42oh]{animation-play-state:paused}.marquee-item[data-astro-cid-y63m42oh]{flex-shrink:0;height:var(--h);overflow:hidden}.marquee-img[data-astro-cid-y63m42oh]{display:block;height:100%;width:auto;-o-object-fit:cover;object-fit:cover;transition:filter .4s ease}.marquee-outer[data-astro-cid-y63m42oh]:hover .marquee-img[data-astro-cid-y63m42oh]{filter:brightness(.92)}@keyframes mq-left{0%{transform:translate(0)}to{transform:translate(-50%)}}@keyframes mq-right{0%{transform:translate(-50%)}to{transform:translate(0)}}@media (prefers-reduced-motion: reduce){.marquee-track[data-astro-cid-y63m42oh]{animation:none!important;flex-wrap:wrap;width:100%;gap:6px}.marquee-item[data-astro-cid-y63m42oh]{flex:0 0 auto}}
+@keyframes sp-pulse{0%,to{opacity:.35}50%{opacity:1}}@media (prefers-reduced-motion: reduce){#c-text[data-astro-cid-dhmgzpij]{opacity:1!important}#c-hint[data-astro-cid-dhmgzpij]{display:none!important}}
+</style><script type="module" src="assets/js/main.js"></script></head> <body class="bg-cream text-brand-dark font-sans antialiased"> <header id="main-nav" data-scrolled="false" class="fixed top-0 left-0 right-0 z-50"> <div class="max-w-7xl mx-auto px-6 lg:px-10"> <nav class="flex items-center justify-between h-20" aria-label="Navegación principal"> <!-- Logo --> <a href="./" aria-label="MOED Wedding Planning — Inicio" class="nav-logo font-serif text-2xl tracking-widest transition-colors duration-300">
+MOED
+</a> <!-- Desktop links --> <ul class="hidden md:flex items-center gap-8" role="list"> <li> <a href="./" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 active" aria-current="page"> Inicio </a> </li><li> <a href="servicios/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold"> Servicios </a> </li><li> <a href="portafolio/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold"> Portafolio </a> </li><li> <a href="equipo/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold"> Equipo </a> </li><li> <a href="contacto/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold"> Contacto </a> </li> </ul> <!-- CTA desktop --> <a href="contacto/" class="nav-cta hidden md:inline-block px-6 py-2.5 border text-xs font-sans uppercase tracking-widest transition-all duration-300 hover:bg-olive hover:border-olive hover:text-white">
+Conversemos
+</a> <!-- Hamburger --> <button id="menu-btn" class="md:hidden p-2 flex flex-col gap-[5px]" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"> <span class="hamburger-bar block w-6 h-px transition-all duration-300 origin-center"></span> <span class="hamburger-bar block w-6 h-px transition-all duration-300"></span> <span class="hamburger-bar block w-6 h-px transition-all duration-300 origin-center"></span> </button> </nav> </div> <!-- Mobile menu --> <div id="mobile-menu" role="dialog" aria-label="Menú móvil" class="hidden md:hidden bg-cream border-t border-brand-border"> <ul class="flex flex-col py-4 px-6" role="list"> <li> <a href="./" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Inicio </a> </li><li> <a href="servicios/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Servicios </a> </li><li> <a href="portafolio/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Portafolio </a> </li><li> <a href="equipo/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Equipo </a> </li><li> <a href="contacto/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Contacto </a> </li> <li class="pt-5 pb-2"> <a href="contacto/" class="block text-center btn-primary">Conversemos</a> </li> </ul> </div> </header>  <main id="main-content">   <section class="relative min-h-screen flex items-center justify-center text-center overflow-hidden"> <!-- Background image — REEMPLAZAR por imagen local WebP --> <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&auto=format&fit=crop&q=85" alt="Boda elegante en hacienda del sureste mexicano" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover hero-kenburns"> <!-- Overlay --> <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/55"></div> <!-- Content --> <div class="relative z-10 px-6 max-w-3xl mx-auto"> <span class="block text-white/70 text-xs font-sans uppercase tracking-widest mb-6">
+Valladolid, Yucatán · México
+</span> <h1 class="font-serif text-5xl md:text-7xl text-white leading-none tracking-wide mb-6">
+Diseñamos momentos<br> <em class="not-italic text-gold">que perduran</em><br>
+para siempre
+</h1> <p class="text-white/80 text-base md:text-lg font-sans max-w-lg mx-auto leading-relaxed mb-10">
+Bodas de alto nivel y bodas destino en el sureste mexicano. Más de 12 años convirtiendo
+        la visión de las parejas en experiencias extraordinarias.
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center"> <a href="contacto/" class="btn-primary">Comencemos a soñar</a> <a href="portafolio/" class="btn-ghost">Ver portafolio</a> </div> </div> <!-- Scroll indicator --> <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"> <span class="text-xs font-sans uppercase tracking-widest">Scroll</span> <div class="w-px h-10 bg-white/30 animate-pulse"></div> </div> </section>  <section class="py-24 md:py-32"> <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"> <!-- Imagen — forma asimétrica --> <div class="reveal order-2 lg:order-1 relative"> <div class="img-rounded-soft overflow-hidden"> <img src="https://images.unsplash.com/photo-1483655424-24de21dbe2aa?w=800&auto=format&fit=crop&q=80" alt="Equipo MOED coordinando los detalles de una boda" width="800" height="960" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 hover:scale-105"> </div> <!-- REEMPLAZAR --> <!-- Acento dorado --> <div class="absolute -bottom-5 -right-5 w-24 h-24 border-2 border-gold hidden lg:block"></div> </div> <!-- Texto --> <div class="reveal reveal-delay-1 order-1 lg:order-2"> <span class="label">Sobre MOED</span> <h2 class="section-title mb-6">
+Cada boda es una obra<br>única e irrepetible
+</h2> <span class="gold-divider"></span> <p class="text-brand-mid leading-relaxed mb-6">
+MOED nació en Valladolid con una convicción: la planeación de una boda debería ser
+          tan memorable como la boda misma. Somos un equipo de mujeres apasionadas por los
+          detalles, la estética y la logística impecable.
+</p> <p class="text-brand-mid leading-relaxed mb-10">
+Trabajamos con parejas que valoran la elegancia discreta, el trato personalizado y la
+          certeza de que su gran día estará en manos expertas. Desde Valladolid hasta la Riviera
+          Maya, nuestro equipo conoce cada venue, cada proveedor, cada secreto del sureste.
+</p> <a href="equipo/" class="btn-outline">Conocer al equipo</a> </div> </div> </section>  <section class="bg-olive py-20"> <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center text-white"> <div class="reveal reveal-delay-1"> <p class="font-serif text-5xl md:text-6xl tracking-wider mb-2">300+</p> <p class="text-white/70 text-xs font-sans uppercase tracking-widest">Bodas coordinadas</p> </div><div class="reveal reveal-delay-2"> <p class="font-serif text-5xl md:text-6xl tracking-wider mb-2">12</p> <p class="text-white/70 text-xs font-sans uppercase tracking-widest">Años de experiencia</p> </div><div class="reveal reveal-delay-3"> <p class="font-serif text-5xl md:text-6xl tracking-wider mb-2">8</p> <p class="text-white/70 text-xs font-sans uppercase tracking-widest">Destinos en México</p> </div> </div> </section>  <section id="candle-scroll" style="height: 220vh; position: relative;" data-astro-cid-dhmgzpij> <div id="candle-sticky" style="position: sticky; top: 0; height: 100vh; overflow: hidden; background: #080806;" data-astro-cid-dhmgzpij> <!-- Canvas — bengala + chispas + bokeh (z-index bajo) --> <canvas id="sp-canvas" style="position: absolute; inset: 0; pointer-events: none; z-index: 1;" data-astro-cid-dhmgzpij></canvas> <!-- Texto — parte superior, por encima del canvas --> <div id="c-text" style="
+        position: absolute;
+        top: 18%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(540px, 86vw);
+        text-align: center;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 10;
+      " data-astro-cid-dhmgzpij> <span style="
+        display: block;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #C9A86A;
+        margin-bottom: 1.1rem;
+      " data-astro-cid-dhmgzpij>Nuestra filosofía</span> <h2 style="
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1.8rem, 4.2vw, 3rem);
+        line-height: 1.2;
+        color: #F5F0E6;
+        font-weight: 300;
+        margin-bottom: 1.3rem;
+        text-shadow: 0 2px 24px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.7);
+      " data-astro-cid-dhmgzpij>
+Como la llama de una bengala,<br data-astro-cid-dhmgzpij>
+cada boda tiene su propio brillo
+</h2> <div style="width: 3rem; height: 1px; background: #C9A86A; margin: 0 auto 1.3rem;" data-astro-cid-dhmgzpij></div> <p style="
+        font-family: 'Jost', sans-serif;
+        font-size: 0.85rem;
+        color: #A8A296;
+        line-height: 1.85;
+        max-width: 400px;
+        margin: 0 auto;
+        text-shadow: 0 1px 12px rgba(0,0,0,0.8);
+      " data-astro-cid-dhmgzpij>
+Cuidamos cada detalle con la misma dedicación con que<br data-astro-cid-dhmgzpij>
+se cuida una chispa especial. Así garantizamos que el<br data-astro-cid-dhmgzpij>
+brillo de su celebración nunca se apague.
+</p> </div> <!-- Indicador de scroll --> <div id="c-hint" style="
+        position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+        display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+        color: rgba(245,240,230,0.3); z-index: 10;
+      " data-astro-cid-dhmgzpij> <span style="font-family:'Jost',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;" data-astro-cid-dhmgzpij>Scroll</span> <div style="width:1px;height:2.5rem;background:linear-gradient(to bottom,rgba(201,168,106,0.45),transparent);animation:sp-pulse 2s ease-in-out infinite;" data-astro-cid-dhmgzpij></div> </div> </div> </section>    <section class="py-24 md:py-32"> <div class="max-w-7xl mx-auto px-6 lg:px-10"> <div class="text-center mb-16 reveal"> <span class="label">Lo que hacemos</span> <h2 class="section-title">Nuestros servicios</h2> <span class="gold-divider mx-auto"></span> <p class="text-brand-mid max-w-xl mx-auto mt-4 text-sm leading-relaxed">
+Cada pareja es diferente. Por eso ofrecemos opciones de servicio que se adaptan
+          a su visión, su destino y su ritmo.
+</p> </div> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <article class="reveal reveal-delay-1 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius: 14px"> <!-- Image — esquinas redondeadas heredadas del article --> <div class="img-rounded aspect-[4/3]" style="border-radius: 14px 14px 0 0"> <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&auto=format&fit=crop&q=80" alt="Coordinación integral de boda: mesa decorada con flores y detalles elegantes" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR: cambiar src por imagen local WebP --> </div> <!-- Content --> <div class="flex flex-col flex-1 p-8"> <span class="label">Tu boda perfecta, de principio a fin</span> <h3 class="font-serif text-2xl mb-4">Coordinación Integral</h3> <p class="text-brand-mid text-sm leading-relaxed mb-6">Nuestro servicio más completo: te acompañamos desde la primera visión hasta el último baile. Gestionamos cada proveedor, cada detalle logístico y cada emoción para que tú y tu pareja vivan su día con total plenitud.</p> <!-- Feature highlights (3 primeras) --> <ul class="space-y-2 mb-8 flex-1"> <li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Sesión inicial de visión y estética </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Búsqueda y selección de venue </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Gestión integral de proveedores </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Diseño conceptual y floral </li> </ul> <a href="servicios/coordinacion-integral/" class="btn-outline self-start text-xs">
+Ver detalles
+</a> </div> </article><article class="reveal reveal-delay-2 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius: 14px"> <!-- Image — esquinas redondeadas heredadas del article --> <div class="img-rounded aspect-[4/3]" style="border-radius: 14px 14px 0 0"> <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=900&auto=format&fit=crop&q=80" alt="Boda destino en hacienda yucateca: ceremonia al atardecer entre columnas históricas" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR: cambiar src por imagen local WebP --> </div> <!-- Content --> <div class="flex flex-col flex-1 p-8"> <span class="label">La magia del sureste mexicano como escenario</span> <h3 class="font-serif text-2xl mb-4">Boda Destino</h3> <p class="text-brand-mid text-sm leading-relaxed mb-6">Especialistas en bodas destino en Valladolid, Mérida, Riviera Maya y Bacalar. Conocemos los mejores espacios, tenemos relaciones sólidas con proveedores locales y manejamos cada aspecto logístico para parejas que llegan desde cualquier parte del mundo.</p> <!-- Feature highlights (3 primeras) --> <ul class="space-y-2 mb-8 flex-1"> <li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Scouting de venues exclusivos en el destino </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Red certificada de proveedores locales </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Gestión de documentación civil y religiosa </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Coordinación de hospedaje para invitados </li> </ul> <a href="servicios/boda-destino/" class="btn-outline self-start text-xs">
+Ver detalles
+</a> </div> </article><article class="reveal reveal-delay-3 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius: 14px"> <!-- Image — esquinas redondeadas heredadas del article --> <div class="img-rounded aspect-[4/3]" style="border-radius: 14px 14px 0 0"> <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=900&auto=format&fit=crop&q=80" alt="Coordinación personalizada: detalle de flores y decoración artesanal en boda íntima" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR: cambiar src por imagen local WebP --> </div> <!-- Content --> <div class="flex flex-col flex-1 p-8"> <span class="label">El apoyo exacto que tú necesitas</span> <h3 class="font-serif text-2xl mb-4">Coordinación Personalizada</h3> <p class="text-brand-mid text-sm leading-relaxed mb-6">Diseñamos un plan de servicio completamente a tu medida. Desde la coordinación exclusiva del día hasta el apoyo puntual en fases específicas del proceso. Tú decides cuánto acompañamiento deseas; nosotras ponemos la experiencia.</p> <!-- Feature highlights (3 primeras) --> <ul class="space-y-2 mb-8 flex-1"> <li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Diagnóstico inicial sin costo </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Plan de servicio modular a la medida </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Revisión de contratos con proveedores </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Guía de timeline y checklist personalizado </li> </ul> <a href="servicios/coordinacion-personalizada/" class="btn-outline self-start text-xs">
+Ver detalles
+</a> </div> </article> </div> </div> </section>  <section class="py-24 md:py-28 bg-olive-50"> <div class="max-w-7xl mx-auto px-6 lg:px-10"> <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal"> <div> <span class="label">Nuestro trabajo</span> <h2 class="section-title">Portafolio</h2> </div> <a href="portafolio/" class="btn-outline mt-6 md:mt-0 self-start">Ver todo el portafolio</a> </div> <div class="columns-2 md:columns-3 gap-4 space-y-4"> <div class="reveal reveal-delay-1 break-inside-avoid overflow-hidden group"> <a href="portafolio/" aria-label="Ver portafolio: Boda en hacienda yucateca"> <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700&auto=format&fit=crop&q=80" alt="Boda en hacienda yucateca" width="700" height="933" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </a> </div><div class="reveal reveal-delay-2 break-inside-avoid overflow-hidden group"> <a href="portafolio/" aria-label="Ver portafolio: Ceremonia en cenote natural"> <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=700&auto=format&fit=crop&q=80" alt="Ceremonia en cenote natural" width="700" height="467" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </a> </div><div class="reveal reveal-delay-3 break-inside-avoid overflow-hidden group"> <a href="portafolio/" aria-label="Ver portafolio: Mesa de recepción decorada"> <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=700&auto=format&fit=crop&q=80" alt="Mesa de recepción decorada" width="700" height="525" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </a> </div><div class="reveal reveal-delay-1 break-inside-avoid overflow-hidden group"> <a href="portafolio/" aria-label="Ver portafolio: Arco floral de ceremonia"> <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700&auto=format&fit=crop&q=80" alt="Arco floral de ceremonia" width="700" height="1050" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </a> </div><div class="reveal reveal-delay-2 break-inside-avoid overflow-hidden group"> <a href="portafolio/" aria-label="Ver portafolio: Boda de playa al atardecer"> <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=700&auto=format&fit=crop&q=80" alt="Boda de playa al atardecer" width="700" height="467" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </a> </div><div class="reveal reveal-delay-3 break-inside-avoid overflow-hidden group"> <a href="portafolio/" aria-label="Ver portafolio: Primera danza de los novios"> <img src="https://images.unsplash.com/photo-1464347601390-25e2842a37b7?w=700&auto=format&fit=crop&q=80" alt="Primera danza de los novios" width="700" height="467" loading="lazy" decoding="async" class="w-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </a> </div> </div> </div> </section>  <section class="py-24 md:py-32"> <div class="max-w-7xl mx-auto px-6 lg:px-10"> <div class="text-center mb-16 reveal"> <span class="label">Las personas detrás de cada boda</span> <h2 class="section-title">Nuestro equipo</h2> <span class="gold-divider mx-auto"></span> </div> <div class="grid grid-cols-2 md:grid-cols-4 gap-8"> <div class="reveal reveal-delay-1 text-center group"> <!-- Arco en equipo preview del home --> <div class="img-arch aspect-[3/4] mb-4"> <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80" alt="Elena Dolara, fundadora de MOED Wedding Planning" width="300" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </div> <p class="font-serif text-base">Elena Dolara</p> <p class="text-xs font-sans text-brand-mid uppercase tracking-wider mt-1">Fundadora &amp; Directora Creativa</p> </div><div class="reveal reveal-delay-2 text-center group"> <!-- Arco en equipo preview del home --> <div class="img-arch aspect-[3/4] mb-4"> <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80" alt="Sofía Montero, coordinadora senior de MOED" width="300" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </div> <p class="font-serif text-base">Sofía Montero</p> <p class="text-xs font-sans text-brand-mid uppercase tracking-wider mt-1">Coordinadora Senior de Eventos</p> </div><div class="reveal reveal-delay-3 text-center group"> <!-- Arco en equipo preview del home --> <div class="img-arch aspect-[3/4] mb-4"> <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&auto=format&fit=crop&q=80" alt="Valeria Reyes, diseñadora floral de MOED" width="300" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </div> <p class="font-serif text-base">Valeria Reyes</p> <p class="text-xs font-sans text-brand-mid uppercase tracking-wider mt-1">Diseñadora Floral &amp; Visual</p> </div><div class="reveal reveal-delay-4 text-center group"> <!-- Arco en equipo preview del home --> <div class="img-arch aspect-[3/4] mb-4"> <img src="https://images.unsplash.com/photo-1614644147798-f8c0fc9da7f6?w=600&auto=format&fit=crop&q=80" alt="Camila Vargas, coordinadora de proveedores de MOED" width="300" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR --> </div> <p class="font-serif text-base">Camila Vargas</p> <p class="text-xs font-sans text-brand-mid uppercase tracking-wider mt-1">Coordinadora de Proveedores</p> </div> </div> <div class="text-center mt-12 reveal"> <a href="equipo/" class="btn-outline">Conocer al equipo</a> </div> </div> </section>  <div class="py-3 bg-cream-dark"> <div class="marquee-outer" style="--h: 280px; --dur: 40s" role="presentation" aria-hidden="true" data-astro-cid-y63m42oh> <div class="marquee-track marquee-left" data-astro-cid-y63m42oh> <!-- Set original --> <div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&auto=format&fit=crop&q=80" alt="Boda de Ana y Rodrigo en Hacienda Temozon — decoración floral en blancos y verdes" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=900&auto=format&fit=crop&q=80" alt="Ceremonia de Camille y Marc junto a cenote natural en Yucatán" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=900&auto=format&fit=crop&q=80" alt="Recepción íntima de Daniela y Ernesto en Casa de los Venados, Valladolid" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&auto=format&fit=crop&q=80" alt="Boda de Isabella y Lorenzo — arco floral con flores tropicales en hacienda yucateca" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&auto=format&fit=crop&q=80" alt="Ceremonia al atardecer de Mariana y Sebastián en playa del carmen" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1464347601390-25e2842a37b7?w=900&auto=format&fit=crop&q=80" alt="Boda destino de Valentina y Diego frente a la Laguna de Bacalar" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=900&auto=format&fit=crop&q=80" alt="Recepción de Fernanda y Miguel en Ex-Convento histórico de Valladolid" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=900&auto=format&fit=crop&q=80" alt="Boda urbana de Sofía y Andrés en el centro histórico de Mérida" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=900&auto=format&fit=crop&q=80" alt="Boda bohemia de Laura y Pablo en Tulum al atardecer" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div> <!-- Duplicado para loop perfecto — aria-hidden ya está en el padre --> <div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1464347601390-25e2842a37b7?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div><div class="marquee-item" data-astro-cid-y63m42oh> <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=900&auto=format&fit=crop&q=80" alt="" height="280" loading="lazy" decoding="async" class="marquee-img" data-astro-cid-y63m42oh> </div> </div> </div>  </div>  <section class="bg-olive/10 py-24"> <div class="max-w-4xl mx-auto px-6"> <!-- Header --> <div class="text-center mb-16 reveal"> <span class="label">Lo que dicen nuestras parejas</span> <h2 class="section-title">Palabras que nos mueven</h2> <span class="gold-divider mx-auto"></span> </div> <!-- Carousel wrapper --> <div class="relative overflow-hidden reveal reveal-delay-1" id="carousel-outer" aria-label="Testimonios de clientes" aria-live="polite"> <div class="carousel-track" id="carousel-track"> <div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="false" data-index="0"> <!-- Quote mark --> <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div> <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">
+"Confiar en MOED fue la mejor decisión que tomamos. Elena y su equipo convirtieron nuestra visión en algo que superó todos nuestros sueños. Llegamos a nuestra boda completamente tranquilos y presentes, sabiendo que cada detalle estaba en manos perfectas."
+</blockquote> <!-- Avatar + info --> <div class="flex flex-col items-center gap-3"> <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=120&auto=format&fit=crop&q=80" alt="Foto de Ana &#38; Rodrigo" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40"> <div> <p class="font-serif text-lg font-semibold">Ana &amp; Rodrigo</p> <p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1"> Marzo 2024 · Hacienda Temozon, Valladolid </p> </div> </div> </div><div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="true" data-index="1"> <!-- Quote mark --> <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div> <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">
+"As a French couple planning a destination wedding in Mexico, we were nervous about the logistics. MOED handled everything flawlessly — and the ceremony at the cenote was beyond magical. We could not have done it without them."
+</blockquote> <!-- Avatar + info --> <div class="flex flex-col items-center gap-3"> <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=120&auto=format&fit=crop&q=80" alt="Foto de Camille &#38; Marc" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40"> <div> <p class="font-serif text-lg font-semibold">Camille &amp; Marc</p> <p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1"> Noviembre 2023 · Cenote Dzitnup, Yucatán </p> </div> </div> </div><div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="true" data-index="2"> <!-- Quote mark --> <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div> <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">
+"Lo que más nos sorprendió fue el nivel de atención personalizada. No éramos un cliente más; éramos Dani y Ernes con nuestra historia única. Cada elemento de la boda nos reflejó a nosotros. MOED es simplemente extraordinario."
+</blockquote> <!-- Avatar + info --> <div class="flex flex-col items-center gap-3"> <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=120&auto=format&fit=crop&q=80" alt="Foto de Daniela &#38; Ernesto" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40"> <div> <p class="font-serif text-lg font-semibold">Daniela &amp; Ernesto</p> <p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1"> Enero 2024 · Casa de los Venados, Valladolid </p> </div> </div> </div><div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="true" data-index="3"> <!-- Quote mark --> <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div> <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">
+"Sofía estuvo presente en absolutamente todo. Desde las 6 de la mañana hasta la última canción. Su energía, su profesionalismo y su sonrisa genuina hicieron que nuestro día fuera perfecto. Les recomendamos MOED con los ojos cerrados."
+</blockquote> <!-- Avatar + info --> <div class="flex flex-col items-center gap-3"> <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=120&auto=format&fit=crop&q=80" alt="Foto de Isabella &#38; Lorenzo" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover ring-2 ring-gold/40"> <div> <p class="font-serif text-lg font-semibold">Isabella &amp; Lorenzo</p> <p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1"> Febrero 2024 · Hacienda Sotuta de Peón, Yucatán </p> </div> </div> </div><div class="w-full flex-shrink-0 px-4 text-center" aria-hidden="true" data-index="4"> <!-- Quote mark --> <div class="font-serif text-6xl text-olive/30 leading-none mb-4" aria-hidden="true">"</div> <blockquote class="font-serif text-xl md:text-2xl leading-relaxed text-brand-dark mb-8 italic">
+"Contraté solo la coordinación del día y fue lo más inteligente que hice. El equipo de MOED llegó, tomó el control y yo pude disfrutar mi boda como si fuera invitada. Cada momento estuvo lleno de paz y alegría. Gracias eternas."
+</blockquote> <!-- Avatar + info --> <div class="flex flex-col items-center gap-3">  <div> <p class="font-serif text-lg font-semibold">Mariana &amp; Sebastián</p> <p class="text-xs font-sans uppercase tracking-widest text-brand-mid mt-1"> Diciembre 2023 · Playa del Carmen, Quintana Roo </p> </div> </div> </div> </div> </div> <!-- Controls --> <div class="flex items-center justify-center gap-6 mt-10"> <button id="carousel-prev" class="w-10 h-10 border border-olive text-olive flex items-center justify-center hover:bg-olive hover:text-white transition-colors" aria-label="Testimonio anterior"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"> <polyline points="15 18 9 12 15 6"></polyline> </svg> </button> <!-- Dots --> <div class="flex gap-2" id="carousel-dots" role="tablist" aria-label="Selector de testimonio"> <button role="tab" aria-selected="true" aria-label="Testimonio 1" data-dot="0" class="w-2 h-2 rounded-full transition-all duration-300 bg-olive w-5"></button><button role="tab" aria-selected="false" aria-label="Testimonio 2" data-dot="1" class="w-2 h-2 rounded-full transition-all duration-300 bg-brand-border"></button><button role="tab" aria-selected="false" aria-label="Testimonio 3" data-dot="2" class="w-2 h-2 rounded-full transition-all duration-300 bg-brand-border"></button><button role="tab" aria-selected="false" aria-label="Testimonio 4" data-dot="3" class="w-2 h-2 rounded-full transition-all duration-300 bg-brand-border"></button><button role="tab" aria-selected="false" aria-label="Testimonio 5" data-dot="4" class="w-2 h-2 rounded-full transition-all duration-300 bg-brand-border"></button> </div> <button id="carousel-next" class="w-10 h-10 border border-olive text-olive flex items-center justify-center hover:bg-olive hover:text-white transition-colors" aria-label="Siguiente testimonio"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"> <polyline points="9 18 15 12 9 6"></polyline> </svg> </button> </div> </div> </section>   <section class="relative py-32 overflow-hidden"> <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1600&auto=format&fit=crop&q=80" alt="Pareja feliz en su boda destino" width="1600" height="900" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover" data-parallax> <!-- REEMPLAZAR --> <div class="absolute inset-0 bg-black/55"></div> <div class="relative z-10 text-center px-6 max-w-2xl mx-auto reveal"> <span class="label text-white/70">Tu historia comienza aquí</span> <h2 class="font-serif text-4xl md:text-5xl text-white mb-6 leading-tight">
+¿Lista para comenzar a planear el día más especial de tu vida?
+</h2> <span class="block w-12 h-px bg-gold mx-auto mb-8"></span> <a href="contacto/" class="btn-ghost">Hablemos hoy</a> </div> </section>  </main> <footer class="bg-cream text-brand-dark border-t border-brand-border"> <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-3 gap-12"> <!-- Columna 1: Marca --> <div> <a href="./" class="font-serif text-3xl tracking-widest text-white hover:text-gold transition-colors">
+MOED
+</a> <p class="mt-4 text-sm text-brand-light leading-relaxed max-w-xs">
+Diseñamos momentos que perduran para siempre.<br>
+Valladolid, Yucatán · México
+</p> <!-- Redes sociales --> <div class="flex gap-4 mt-6"> <!-- REEMPLAZAR los href con las URLs reales --> <a href="https://instagram.com/moed.wedding" target="_blank" rel="noopener noreferrer" aria-label="Instagram de MOED" class="text-brand-light hover:text-gold transition-colors"> <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path> </svg> </a> <a href="https://facebook.com/moedwedding" target="_blank" rel="noopener noreferrer" aria-label="Facebook de MOED" class="text-brand-light hover:text-gold transition-colors"> <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path> </svg> </a> <a href="https://pinterest.com/moedwedding" target="_blank" rel="noopener noreferrer" aria-label="Pinterest de MOED" class="text-brand-light hover:text-gold transition-colors"> <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"></path> </svg> </a> <a href="https://tiktok.com/@moed.wedding" target="_blank" rel="noopener noreferrer" aria-label="TikTok de MOED" class="text-brand-light hover:text-gold transition-colors"> <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.54V6.78a4.85 4.85 0 0 1-1.07-.09z"></path> </svg> </a> </div> </div> <!-- Columna 2: Navegación --> <div> <h3 class="text-xs font-sans uppercase tracking-widest text-brand-light mb-6">Navegación</h3> <ul class="space-y-3"> <li> <a href="./" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Inicio </a> </li><li> <a href="servicios/" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Servicios </a> </li><li> <a href="portafolio/" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Portafolio </a> </li><li> <a href="equipo/" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Equipo </a> </li><li> <a href="contacto/" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Contacto </a> </li> <li> <a href="landing/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">
+Promo especial
+</a> </li> </ul> </div> <!-- Columna 3: Contacto --> <div> <h3 class="text-xs font-sans uppercase tracking-widest text-brand-light mb-6">Contacto</h3> <address class="not-italic space-y-3"> <p class="text-sm text-brand-light leading-relaxed">
+Calle 41 #230, Centro<br>
+Valladolid, Yucatán 97780<br>
+México
+</p> <p> <a href="tel:+529851002030" class="text-sm text-brand-light hover:text-white transition-colors">
++52 985 100 2030
+</a> </p> <p> <a href="mailto:edolara@gmail.com" class="text-sm text-brand-light hover:text-white transition-colors">
+edolara@gmail.com
+</a> </p> </address> </div> </div> <!-- Bottom bar --> <div class="border-t border-white/10"> <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3"> <p class="text-xs text-brand-light">© 2026 MOED Wedding Planning. Todos los derechos reservados.</p> <p class="text-xs text-brand-light">Valladolid, Yucatán · México</p> </div> </div> </footer> <!-- Global: scroll-reveal + parallax -->  </body> </html>

@@ -1,245 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Servicios de Wedding Planning | MOED</title>
-<meta name="description" content="Coordinación integral, boda destino y coordinación personalizada en Valladolid y el sureste mexicano. Descubre nuestros paquetes de wedding planning de alto nivel." />
-<meta name="theme-color" content="#C9A86A" />
-<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
-<link rel="preconnect" href="https://images.unsplash.com" />
-<link rel="stylesheet" href="../assets/css/main.css" />
-</head>
-<body class="bg-cream text-brand-dark font-sans antialiased">
-
-<!-- ══ NAV ══ -->
-<header id="main-nav" data-scrolled="false" class="fixed top-0 left-0 right-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <nav class="flex items-center justify-between h-20" aria-label="Navegación principal">
-      <a href="../" aria-label="MOED Wedding Planning — Inicio" class="nav-logo font-serif text-2xl tracking-widest transition-colors duration-300">MOED</a>
-      <ul class="hidden md:flex items-center gap-8" role="list">
-        <li><a href="../" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold">Inicio</a></li>
-        <li><a href="./" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 active" aria-current="page">Servicios</a></li>
-        <li><a href="../portafolio/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold">Portafolio</a></li>
-        <li><a href="../equipo/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold">Equipo</a></li>
-        <li><a href="../contacto/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold">Contacto</a></li>
-      </ul>
-      <a href="../contacto/" class="nav-cta hidden md:inline-block px-6 py-2.5 border text-xs font-sans uppercase tracking-widest transition-all duration-300">Conversemos</a>
-      <button id="menu-btn" class="md:hidden p-2 flex flex-col gap-[5px]" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-        <span class="hamburger-bar block w-6 h-px transition-all duration-300 origin-center"></span>
-        <span class="hamburger-bar block w-6 h-px transition-all duration-300"></span>
-        <span class="hamburger-bar block w-6 h-px transition-all duration-300 origin-center"></span>
-      </button>
-    </nav>
-  </div>
-  <div id="mobile-menu" role="dialog" aria-label="Menú móvil" class="hidden md:hidden bg-cream border-t border-brand-border">
-    <ul class="flex flex-col py-4 px-6" role="list">
-      <li><a href="../" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Inicio</a></li>
-      <li><a href="./" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Servicios</a></li>
-      <li><a href="../portafolio/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Portafolio</a></li>
-      <li><a href="../equipo/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Equipo</a></li>
-      <li><a href="../contacto/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors">Contacto</a></li>
-      <li class="pt-5 pb-2"><a href="../contacto/" class="block text-center btn-primary">Conversemos</a></li>
-    </ul>
-  </div>
-</header>
-
-<!-- ══ HERO ══ -->
-<section class="relative pt-40 pb-24 overflow-hidden">
-  <img src="https://images.unsplash.com/photo-1464347601390-25e2842a37b7?w=1600&auto=format&fit=crop&q=80" alt="Detalle de decoración floral en boda coordinada por MOED" width="1600" height="600" loading="eager" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover" />
-  <div class="absolute inset-0 bg-black/55"></div>
-  <div class="relative z-10 text-center max-w-3xl mx-auto px-6">
-    <span class="label text-white/70">Lo que hacemos</span>
-    <h1 class="page-hero-title text-white mb-4">Servicios</h1>
-    <p class="text-white/70 font-sans text-base max-w-lg mx-auto">Tres formas de acompañarte hacia el día más especial de tu vida.</p>
-  </div>
-</section>
-
-<!-- ══ INTRO ══ -->
-<section class="py-20">
-  <div class="max-w-3xl mx-auto px-6 text-center reveal">
-    <span class="label">Nuestra filosofía</span>
-    <h2 class="section-title mb-6">No organizamos bodas.<br>Diseñamos experiencias.</h2>
-    <span class="gold-divider mx-auto"></span>
-    <p class="text-brand-mid leading-relaxed mt-4">Cada pareja tiene una historia única. Nuestro trabajo es escucharla, comprenderla y traducirla en una celebración que los refleje en cada detalle. Ya sea que deseen delegar todo o solo el día de su boda, MOED tiene el servicio indicado para ustedes.</p>
-  </div>
-</section>
-
-<!-- ══ TARJETAS DE SERVICIO ══ -->
-<section class="pb-24">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Coordinación Integral -->
-      <article class="reveal reveal-delay-1 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius:14px;">
-        <div class="img-rounded aspect-[4/3]" style="border-radius:14px 14px 0 0;">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Mesa decorada con flores elegantes" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        </div>
-        <div class="flex flex-col flex-1 p-8">
-          <span class="label">Tu boda perfecta, de principio a fin</span>
-          <h3 class="font-serif text-2xl mb-4">Coordinación Integral</h3>
-          <p class="text-brand-mid text-sm leading-relaxed mb-6">Nuestro servicio más completo: te acompañamos desde la primera visión hasta el último baile. Gestionamos cada proveedor, cada detalle logístico y cada emoción para que tú y tu pareja vivan su día con total plenitud.</p>
-          <ul class="space-y-2 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Sesión inicial de visión y estética</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Búsqueda y selección de venue</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Gestión integral de proveedores</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Coordinación presencial el día de la boda</li>
-          </ul>
-          <a href="coordinacion-integral/" class="btn-outline self-start text-xs">Ver detalles</a>
-        </div>
-      </article>
-      <!-- Boda Destino -->
-      <article class="reveal reveal-delay-2 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius:14px;">
-        <div class="img-rounded aspect-[4/3]" style="border-radius:14px 14px 0 0;">
-          <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&auto=format&fit=crop&q=80" alt="Ceremonia en hacienda yucateca al atardecer" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        </div>
-        <div class="flex flex-col flex-1 p-8">
-          <span class="label">La magia del sureste mexicano como escenario</span>
-          <h3 class="font-serif text-2xl mb-4">Boda Destino</h3>
-          <p class="text-brand-mid text-sm leading-relaxed mb-6">Especialistas en bodas destino en Valladolid, Mérida, Riviera Maya y Bacalar. Conocemos los mejores espacios, tenemos relaciones sólidas con proveedores locales y manejamos cada aspecto logístico.</p>
-          <ul class="space-y-2 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Scouting de venues exclusivos en el destino</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Red certificada de proveedores locales</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Gestión de documentación civil y religiosa</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Servicio bilingüe español / inglés</li>
-          </ul>
-          <a href="boda-destino/" class="btn-outline self-start text-xs">Ver detalles</a>
-        </div>
-      </article>
-      <!-- Coordinación Personalizada -->
-      <article class="reveal reveal-delay-3 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius:14px;">
-        <div class="img-rounded aspect-[4/3]" style="border-radius:14px 14px 0 0;">
-          <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=600&auto=format&fit=crop&q=80" alt="Decoración artesanal en boda íntima" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        </div>
-        <div class="flex flex-col flex-1 p-8">
-          <span class="label">El apoyo exacto que tú necesitas</span>
-          <h3 class="font-serif text-2xl mb-4">Coordinación Personalizada</h3>
-          <p class="text-brand-mid text-sm leading-relaxed mb-6">Diseñamos un plan de servicio completamente a tu medida. Desde la coordinación exclusiva del día hasta el apoyo puntual en fases específicas. Tú decides cuánto acompañamiento deseas.</p>
-          <ul class="space-y-2 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Diagnóstico inicial sin costo</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Plan de servicio modular a la medida</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Asesoría de diseño y estética</li>
-            <li class="flex items-start gap-3 text-sm text-brand-mid"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span>Coordinación presencial el día del evento</li>
-          </ul>
-          <a href="coordinacion-personalizada/" class="btn-outline self-start text-xs">Ver detalles</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══ ¿EN QUÉ PODEMOS AYUDARTE? ══ -->
-<section class="py-24 bg-olive-50">
-  <div class="max-w-5xl mx-auto px-6 lg:px-10">
-    <div class="text-center mb-14 reveal">
-      <span class="label">Alcance de nuestro trabajo</span>
-      <h2 class="section-title">¿En qué podemos ayudarte?</h2>
-      <span class="gold-divider mx-auto"></span>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
-      <div class="reveal reveal-delay-1 flex items-start gap-4 py-4 border-b border-brand-border"><span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><p class="text-sm text-brand-mid">Definir y plasmar la visión estética de su boda</p></div>
-      <div class="reveal reveal-delay-2 flex items-start gap-4 py-4 border-b border-brand-border"><span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><p class="text-sm text-brand-mid">Seleccionar y gestionar proveedores de confianza</p></div>
-      <div class="reveal reveal-delay-3 flex items-start gap-4 py-4 border-b border-brand-border"><span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><p class="text-sm text-brand-mid">Coordinar la logística del día sin contratiempos</p></div>
-      <div class="reveal reveal-delay-4 flex items-start gap-4 py-4 border-b border-brand-border"><span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><p class="text-sm text-brand-mid">Diseñar un presupuesto real y controlado</p></div>
-      <div class="reveal reveal-delay-1 flex items-start gap-4 py-4 border-b border-brand-border"><span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><p class="text-sm text-brand-mid">Gestionar documentación civil y religiosa</p></div>
-      <div class="reveal reveal-delay-2 flex items-start gap-4 py-4 border-b border-brand-border"><span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><p class="text-sm text-brand-mid">Planificar bodas destino en el sureste mexicano</p></div>
-      <div class="reveal reveal-delay-3 flex items-start gap-4 py-4 border-b border-brand-border"><span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><p class="text-sm text-brand-mid">Crear la experiencia de fin de semana para sus invitados</p></div>
-      <div class="reveal reveal-delay-4 flex items-start gap-4 py-4 border-b border-brand-border"><span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><p class="text-sm text-brand-mid">Estar presentes el día de la boda para que ustedes disfruten</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FORMULARIO ══ -->
-<section class="py-24">
-  <div class="max-w-3xl mx-auto px-6">
-    <div class="text-center mb-12 reveal">
-      <span class="label">Hablemos</span>
-      <h2 class="section-title">¿Tienes preguntas sobre nuestros servicios?</h2>
-      <span class="gold-divider mx-auto"></span>
-      <p class="text-brand-mid text-sm mt-4">Escríbenos y con gusto te orientamos sobre el servicio que mejor se adapta a tu boda.</p>
-    </div>
-    <div class="reveal reveal-delay-1 bg-white border border-brand-border p-8 md:p-12">
-      <form id="contact-form" novalidate class="space-y-5">
-        <div class="grid gap-5 grid-cols-1 sm:grid-cols-2">
-          <div class="field">
-            <label for="nombre" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">Nombre *</label>
-            <input type="text" id="nombre" name="nombre" required autocomplete="given-name" placeholder="Tu nombre" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] placeholder-brand-light focus:outline-none focus:border-olive transition-colors duration-200" />
-            <span class="error-msg hidden text-xs text-red-500 mt-1">Por favor ingresa tu nombre.</span>
-          </div>
-          <div class="field">
-            <label for="telefono" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">Teléfono *</label>
-            <input type="tel" id="telefono" name="telefono" required autocomplete="tel" placeholder="+52 000 000 0000" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] placeholder-brand-light focus:outline-none focus:border-olive transition-colors duration-200" />
-            <span class="error-msg hidden text-xs text-red-500 mt-1">Por favor ingresa tu teléfono.</span>
-          </div>
-        </div>
-        <div class="field">
-          <label for="correo" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">Correo electrónico *</label>
-          <input type="email" id="correo" name="correo" required autocomplete="email" placeholder="tucorreo@ejemplo.com" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] placeholder-brand-light focus:outline-none focus:border-olive transition-colors duration-200" />
-          <span class="error-msg hidden text-xs text-red-500 mt-1">Por favor ingresa un correo válido.</span>
-        </div>
-        <div class="field">
-          <label for="fecha" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">Fecha aproximada de la boda</label>
-          <input type="date" id="fecha" name="fecha" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] focus:outline-none focus:border-olive transition-colors duration-200" />
-        </div>
-        <div class="field">
-          <label for="servicio" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">Servicio de interés</label>
-          <select id="servicio" name="servicio" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] focus:outline-none focus:border-olive transition-colors duration-200 appearance-none cursor-pointer">
-            <option value="">Selecciona una opción</option>
-            <option value="coordinacion-integral">Coordinación Integral</option>
-            <option value="boda-destino">Boda Destino</option>
-            <option value="coordinacion-personalizada">Coordinación Personalizada</option>
-            <option value="otro">Otro / No lo sé aún</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="mensaje" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">Cuéntanos sobre su boda *</label>
-          <textarea id="mensaje" name="mensaje" required rows="5" placeholder="¿Dónde sueñan casarse? ¿Cuántos invitados? ¿Qué los inspira?" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] placeholder-brand-light focus:outline-none focus:border-olive transition-colors duration-200 resize-none"></textarea>
-          <span class="error-msg hidden text-xs text-red-500 mt-1">Por favor escribe tu mensaje.</span>
-        </div>
-        <input type="text" name="_honeypot" class="hidden" tabindex="-1" autocomplete="off" />
-        <div class="pt-2">
-          <button type="submit" class="btn-primary w-full sm:w-auto min-w-[200px]">Enviar mensaje</button>
-        </div>
-        <div id="form-success" class="hidden p-4 bg-olive/10 border border-olive text-sm text-olive">¡Mensaje enviado! Te contactaremos en menos de 24 horas.</div>
-        <div id="form-error" class="hidden p-4 border border-red-200 text-sm text-red-400">Hubo un error al enviar. Por favor escríbenos a <a href="mailto:edolara@gmail.com" class="underline">edolara@gmail.com</a>.</div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
-<footer class="bg-cream text-brand-dark border-t border-brand-border">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div>
-      <a href="../" class="font-serif text-3xl tracking-widest text-white hover:text-gold transition-colors">MOED</a>
-      <p class="mt-4 text-sm text-brand-light leading-relaxed max-w-xs">Diseñamos momentos que perduran para siempre.<br>Valladolid, Yucatán · México</p>
-    </div>
-    <div>
-      <h3 class="text-xs font-sans uppercase tracking-widest text-brand-light mb-6">Navegación</h3>
-      <ul class="space-y-3">
-        <li><a href="../" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Inicio</a></li>
-        <li><a href="./" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Servicios</a></li>
-        <li><a href="../portafolio/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Portafolio</a></li>
-        <li><a href="../equipo/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Equipo</a></li>
-        <li><a href="../contacto/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">Contacto</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="text-xs font-sans uppercase tracking-widest text-brand-light mb-6">Contacto</h3>
-      <address class="not-italic space-y-3">
-        <p class="text-sm text-brand-light leading-relaxed">Calle 41 #230, Centro<br>Valladolid, Yucatán 97780<br>México</p>
-        <p><a href="tel:+529851002030" class="text-sm text-brand-light hover:text-white transition-colors">+52 985 100 2030</a></p>
-        <p><a href="mailto:edolara@gmail.com" class="text-sm text-brand-light hover:text-white transition-colors">edolara@gmail.com</a></p>
-      </address>
-    </div>
-  </div>
-  <div class="border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-xs text-brand-light">© 2026 MOED Wedding Planning. Todos los derechos reservados.</p>
-      <p class="text-xs text-brand-light">Valladolid, Yucatán · México</p>
-    </div>
-  </div>
-</footer>
-
-<script src="../assets/js/main.js"></script>
-</body>
-</html>
+﻿<!DOCTYPE html><html lang="es"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Primary --><title>Servicios de Wedding Planning | MOED Wedding Planning</title><meta name="description" content="Coordinación integral, boda destino y coordinación personalizada en Valladolid y el sureste mexicano. Descubre nuestros paquetes de wedding planning de alto nivel."><link rel="canonical" href="https://moed.mx/servicios/"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://moed.mx/servicios/"><meta property="og:title" content="Servicios de Wedding Planning | MOED Wedding Planning"><meta property="og:description" content="Coordinación integral, boda destino y coordinación personalizada en Valladolid y el sureste mexicano. Descubre nuestros paquetes de wedding planning de alto nivel."><meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=80"><meta property="og:locale" content="es_MX"><meta property="og:site_name" content="MOED Wedding Planning"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Servicios de Wedding Planning | MOED Wedding Planning"><meta name="twitter:description" content="Coordinación integral, boda destino y coordinación personalizada en Valladolid y el sureste mexicano. Descubre nuestros paquetes de wedding planning de alto nivel."><meta name="twitter:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=80"><!-- Favicon --><link rel="icon" type="image/svg+xml" href="../favicon.svg"><meta name="theme-color" content="#C9A86A"><!-- Sitemap --><link rel="sitemap" href="../sitemap.xml"><!-- Structured data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"MOED Wedding Planning","description":"Planeación y coordinación de bodas en Valladolid, Yucatán. Bodas destino en el sureste mexicano.","url":"https://moed.mx","logo":"https://moed.mx/favicon.svg","image":"https://moed.mx/og-image.jpg","telephone":["+52 985 100 2030","+52 985 100 2031"],"email":"edolara@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Calle 41 #230","addressLocality":"Valladolid","addressRegion":"Yucatán","postalCode":"97780","addressCountry":"MX"},"geo":{"@type":"GeoCoordinates","latitude":"20.6890","longitude":"-88.2003"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}],"sameAs":["https://instagram.com/moed.wedding","https://facebook.com/moedwedding","https://pinterest.com/moedwedding"],"priceRange":"$$$$","servesCuisine":null,"areaServed":["Valladolid, Yucatán","Mérida, Yucatán","Riviera Maya","Bacalar"]}</script><link rel="stylesheet" href="../assets/css/main.css"><script type="module" src="../assets/js/contact.js"></script></head> <body class="bg-cream text-brand-dark font-sans antialiased"> <header id="main-nav" data-scrolled="false" class="fixed top-0 left-0 right-0 z-50"> <div class="max-w-7xl mx-auto px-6 lg:px-10"> <nav class="flex items-center justify-between h-20" aria-label="Navegación principal"> <!-- Logo --> <a href="../" aria-label="MOED Wedding Planning — Inicio" class="nav-logo font-serif text-2xl tracking-widest transition-colors duration-300">
+MOED
+</a> <!-- Desktop links --> <ul class="hidden md:flex items-center gap-8" role="list"> <li> <a href="../" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold"> Inicio </a> </li><li> <a href="../servicios/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 active" aria-current="page"> Servicios </a> </li><li> <a href="../portafolio/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold"> Portafolio </a> </li><li> <a href="../equipo/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold"> Equipo </a> </li><li> <a href="../contacto/" class="nav-link text-xs font-sans uppercase tracking-widest transition-colors duration-200 hover:text-gold"> Contacto </a> </li> </ul> <!-- CTA desktop --> <a href="../contacto/" class="nav-cta hidden md:inline-block px-6 py-2.5 border text-xs font-sans uppercase tracking-widest transition-all duration-300 hover:bg-olive hover:border-olive hover:text-white">
+Conversemos
+</a> <!-- Hamburger --> <button id="menu-btn" class="md:hidden p-2 flex flex-col gap-[5px]" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"> <span class="hamburger-bar block w-6 h-px transition-all duration-300 origin-center"></span> <span class="hamburger-bar block w-6 h-px transition-all duration-300"></span> <span class="hamburger-bar block w-6 h-px transition-all duration-300 origin-center"></span> </button> </nav> </div> <!-- Mobile menu --> <div id="mobile-menu" role="dialog" aria-label="Menú móvil" class="hidden md:hidden bg-cream border-t border-brand-border"> <ul class="flex flex-col py-4 px-6" role="list"> <li> <a href="../" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Inicio </a> </li><li> <a href="../servicios/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Servicios </a> </li><li> <a href="../portafolio/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Portafolio </a> </li><li> <a href="../equipo/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Equipo </a> </li><li> <a href="../contacto/" class="block py-3 text-sm font-sans uppercase tracking-widest text-brand-dark border-b border-brand-border hover:text-olive transition-colors"> Contacto </a> </li> <li class="pt-5 pb-2"> <a href="../contacto/" class="block text-center btn-primary">Conversemos</a> </li> </ul> </div> </header>  <main id="main-content">   <section class="relative pt-40 pb-24 overflow-hidden"> <img src="https://images.unsplash.com/photo-1464347601390-25e2842a37b7?w=1600&auto=format&fit=crop&q=80" alt="Detalle de decoración floral en boda coordinada por MOED" width="1600" height="600" loading="eager" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover"> <!-- REEMPLAZAR --> <div class="absolute inset-0 bg-black/55"></div> <div class="relative z-10 text-center max-w-3xl mx-auto px-6"> <span class="label text-white/70">Lo que hacemos</span> <h1 class="page-hero-title text-white mb-4">Servicios</h1> <p class="text-white/70 font-sans text-base max-w-lg mx-auto">
+Tres formas de acompañarte hacia el día más especial de tu vida.
+</p> </div> </section>  <section class="py-20"> <div class="max-w-3xl mx-auto px-6 text-center reveal"> <span class="label">Nuestra filosofía</span> <h2 class="section-title mb-6">No organizamos bodas.<br>Diseñamos experiencias.</h2> <span class="gold-divider mx-auto"></span> <p class="text-brand-mid leading-relaxed mt-4">
+Cada pareja tiene una historia única. Nuestro trabajo es escucharla, comprenderla y
+        traducirla en una celebración que los refleje en cada detalle. Ya sea que deseen delegar
+        todo o solo el día de su boda, MOED tiene el servicio indicado para ustedes.
+</p> </div> </section>  <section class="pb-24"> <div class="max-w-7xl mx-auto px-6 lg:px-10"> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <article class="reveal reveal-delay-1 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius: 14px"> <!-- Image — esquinas redondeadas heredadas del article --> <div class="img-rounded aspect-[4/3]" style="border-radius: 14px 14px 0 0"> <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&auto=format&fit=crop&q=80" alt="Coordinación integral de boda: mesa decorada con flores y detalles elegantes" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR: cambiar src por imagen local WebP --> </div> <!-- Content --> <div class="flex flex-col flex-1 p-8"> <span class="label">Tu boda perfecta, de principio a fin</span> <h3 class="font-serif text-2xl mb-4">Coordinación Integral</h3> <p class="text-brand-mid text-sm leading-relaxed mb-6">Nuestro servicio más completo: te acompañamos desde la primera visión hasta el último baile. Gestionamos cada proveedor, cada detalle logístico y cada emoción para que tú y tu pareja vivan su día con total plenitud.</p> <!-- Feature highlights (3 primeras) --> <ul class="space-y-2 mb-8 flex-1"> <li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Sesión inicial de visión y estética </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Búsqueda y selección de venue </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Gestión integral de proveedores </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Diseño conceptual y floral </li> </ul> <a href="../servicios/coordinacion-integral/" class="btn-outline self-start text-xs">
+Ver detalles
+</a> </div> </article><article class="reveal reveal-delay-2 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius: 14px"> <!-- Image — esquinas redondeadas heredadas del article --> <div class="img-rounded aspect-[4/3]" style="border-radius: 14px 14px 0 0"> <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=900&auto=format&fit=crop&q=80" alt="Boda destino en hacienda yucateca: ceremonia al atardecer entre columnas históricas" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR: cambiar src por imagen local WebP --> </div> <!-- Content --> <div class="flex flex-col flex-1 p-8"> <span class="label">La magia del sureste mexicano como escenario</span> <h3 class="font-serif text-2xl mb-4">Boda Destino</h3> <p class="text-brand-mid text-sm leading-relaxed mb-6">Especialistas en bodas destino en Valladolid, Mérida, Riviera Maya y Bacalar. Conocemos los mejores espacios, tenemos relaciones sólidas con proveedores locales y manejamos cada aspecto logístico para parejas que llegan desde cualquier parte del mundo.</p> <!-- Feature highlights (3 primeras) --> <ul class="space-y-2 mb-8 flex-1"> <li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Scouting de venues exclusivos en el destino </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Red certificada de proveedores locales </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Gestión de documentación civil y religiosa </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Coordinación de hospedaje para invitados </li> </ul> <a href="../servicios/boda-destino/" class="btn-outline self-start text-xs">
+Ver detalles
+</a> </div> </article><article class="reveal reveal-delay-3 group bg-white border border-brand-border flex flex-col overflow-hidden" style="border-radius: 14px"> <!-- Image — esquinas redondeadas heredadas del article --> <div class="img-rounded aspect-[4/3]" style="border-radius: 14px 14px 0 0"> <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=900&auto=format&fit=crop&q=80" alt="Coordinación personalizada: detalle de flores y decoración artesanal en boda íntima" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"> <!-- REEMPLAZAR: cambiar src por imagen local WebP --> </div> <!-- Content --> <div class="flex flex-col flex-1 p-8"> <span class="label">El apoyo exacto que tú necesitas</span> <h3 class="font-serif text-2xl mb-4">Coordinación Personalizada</h3> <p class="text-brand-mid text-sm leading-relaxed mb-6">Diseñamos un plan de servicio completamente a tu medida. Desde la coordinación exclusiva del día hasta el apoyo puntual en fases específicas del proceso. Tú decides cuánto acompañamiento deseas; nosotras ponemos la experiencia.</p> <!-- Feature highlights (3 primeras) --> <ul class="space-y-2 mb-8 flex-1"> <li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Diagnóstico inicial sin costo </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Plan de servicio modular a la medida </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Revisión de contratos con proveedores </li><li class="flex items-start gap-3 text-sm text-brand-mid"> <span class="mt-1 w-1.5 h-1.5 rounded-full bg-olive flex-shrink-0"></span> Guía de timeline y checklist personalizado </li> </ul> <a href="../servicios/coordinacion-personalizada/" class="btn-outline self-start text-xs">
+Ver detalles
+</a> </div> </article> </div> </div> </section>  <section class="py-24 bg-olive-50"> <div class="max-w-5xl mx-auto px-6 lg:px-10"> <div class="text-center mb-14 reveal"> <span class="label">Alcance de nuestro trabajo</span> <h2 class="section-title">¿En qué podemos ayudarte?</h2> <span class="gold-divider mx-auto"></span> </div> <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4"> <div class="reveal reveal-delay-1 flex items-start gap-4 py-4 border-b border-brand-border"> <span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span> <p class="text-sm text-brand-mid">Definir y plasmar la visión estética de su boda</p> </div><div class="reveal reveal-delay-2 flex items-start gap-4 py-4 border-b border-brand-border"> <span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span> <p class="text-sm text-brand-mid">Seleccionar y gestionar proveedores de confianza</p> </div><div class="reveal reveal-delay-3 flex items-start gap-4 py-4 border-b border-brand-border"> <span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span> <p class="text-sm text-brand-mid">Coordinar la logística del día sin contratiempos</p> </div><div class="reveal reveal-delay-4 flex items-start gap-4 py-4 border-b border-brand-border"> <span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span> <p class="text-sm text-brand-mid">Diseñar un presupuesto real y controlado</p> </div><div class="reveal reveal-delay-1 flex items-start gap-4 py-4 border-b border-brand-border"> <span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span> <p class="text-sm text-brand-mid">Gestionar documentación civil y religiosa</p> </div><div class="reveal reveal-delay-2 flex items-start gap-4 py-4 border-b border-brand-border"> <span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span> <p class="text-sm text-brand-mid">Planificar bodas destino en el sureste mexicano</p> </div><div class="reveal reveal-delay-3 flex items-start gap-4 py-4 border-b border-brand-border"> <span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span> <p class="text-sm text-brand-mid">Crear la experiencia de fin de semana para sus invitados</p> </div><div class="reveal reveal-delay-4 flex items-start gap-4 py-4 border-b border-brand-border"> <span class="mt-1 w-2 h-2 rounded-full bg-gold flex-shrink-0"></span> <p class="text-sm text-brand-mid">Estar presentes el día de la boda para que ustedes disfruten</p> </div> </div> </div> </section>  <section class="py-24"> <div class="max-w-3xl mx-auto px-6"> <div class="text-center mb-12 reveal"> <span class="label">Hablemos</span> <h2 class="section-title">¿Tienes preguntas sobre nuestros servicios?</h2> <span class="gold-divider mx-auto"></span> <p class="text-brand-mid text-sm mt-4">
+Escríbenos y con gusto te orientamos sobre el servicio que mejor se adapta a tu boda.
+</p> </div> <div class="reveal reveal-delay-1 bg-white border border-brand-border p-8 md:p-12"> <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST" novalidate class="space-y-5 "> <div class="grid gap-5 grid-cols-1 sm:grid-cols-2"> <!-- Nombre --> <div class="field"> <label for="nombre" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">
+Nombre *
+</label> <input type="text" id="nombre" name="nombre" required autocomplete="given-name" placeholder="Tu nombre" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] placeholder-brand-light
+               focus:outline-none focus:border-olive transition-colors duration-200"> <span class="error-msg hidden text-xs text-red-500 mt-1">Por favor ingresa tu nombre.</span> </div> <!-- Teléfono --> <div class="field"> <label for="telefono" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">
+Teléfono *
+</label> <input type="tel" id="telefono" name="telefono" required autocomplete="tel" placeholder="+52 000 000 0000" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] placeholder-brand-light
+               focus:outline-none focus:border-olive transition-colors duration-200"> <span class="error-msg hidden text-xs text-red-500 mt-1">Por favor ingresa tu teléfono.</span> </div> </div> <!-- Correo --> <div class="field"> <label for="correo" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">
+Correo electrónico *
+</label> <input type="email" id="correo" name="correo" required autocomplete="email" placeholder="tucorreo@ejemplo.com" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] placeholder-brand-light
+             focus:outline-none focus:border-olive transition-colors duration-200"> <span class="error-msg hidden text-xs text-red-500 mt-1">Por favor ingresa un correo válido.</span> </div> <!-- Fecha de boda --> <div class="field"> <label for="fecha" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">
+Fecha aproximada de la boda
+</label> <input type="date" id="fecha" name="fecha" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714]
+               focus:outline-none focus:border-olive transition-colors duration-200"> </div> <!-- Servicio de interés --> <div class="field"> <label for="servicio" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2">
+Servicio de interés
+</label> <select id="servicio" name="servicio" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714]
+               focus:outline-none focus:border-olive transition-colors duration-200 appearance-none cursor-pointer"> <option value="">Selecciona una opción</option> <option value="coordinacion-integral">Coordinación Integral</option> <option value="boda-destino">Boda Destino</option> <option value="coordinacion-personalizada">Coordinación Personalizada</option> <option value="otro">Otro / No lo sé aún</option> </select> </div> <!-- Mensaje --> <div class="field"> <label for="mensaje" class="block text-xs font-sans uppercase tracking-widest text-brand-mid mb-2"> Cuéntanos sobre su boda *
+</label> <textarea id="mensaje" name="mensaje" required rows="5" placeholder="¿Dónde sueñan casarse? ¿Cuántos invitados? ¿Qué los inspira?" class="w-full border border-brand-border bg-white px-4 py-3 text-sm text-[#1a1714] placeholder-brand-light
+             focus:outline-none focus:border-olive transition-colors duration-200 resize-none"></textarea> <span class="error-msg hidden text-xs text-red-500 mt-1">Por favor escribe tu mensaje.</span> </div> <!-- Honeypot anti-spam --> <input type="text" name="_honeypot" class="hidden" tabindex="-1" autocomplete="off"> <!-- Submit --> <div class="pt-2"> <button type="submit" id="form-submit-btn" class="btn-primary w-full sm:w-auto min-w-[200px] flex items-center justify-center gap-3"> <span id="btn-text">Enviar mensaje</span> <span id="btn-spinner" class="hidden w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></span> </button> </div> <!-- Success / Error messages --> <div id="form-success" class="hidden p-4 bg-olive/10 border border-olive text-sm text-olive">
+¡Mensaje enviado! Te contactaremos en menos de 24 horas.
+</div> <div id="form-error" class="hidden p-4 bg-red-50 border border-red-200 text-sm text-red-600">
+Hubo un error al enviar. Por favor escríbenos directamente a <a href="mailto:edolara@gmail.com" class="underline">edolara@gmail.com</a>.
+</div> </form>  </div> </div> </section>  </main> <footer class="bg-cream text-brand-dark border-t border-brand-border"> <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-3 gap-12"> <!-- Columna 1: Marca --> <div> <a href="../" class="font-serif text-3xl tracking-widest text-white hover:text-gold transition-colors">
+MOED
+</a> <p class="mt-4 text-sm text-brand-light leading-relaxed max-w-xs">
+Diseñamos momentos que perduran para siempre.<br>
+Valladolid, Yucatán · México
+</p> <!-- Redes sociales --> <div class="flex gap-4 mt-6"> <!-- REEMPLAZAR los href con las URLs reales --> <a href="https://instagram.com/moed.wedding" target="_blank" rel="noopener noreferrer" aria-label="Instagram de MOED" class="text-brand-light hover:text-gold transition-colors"> <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path> </svg> </a> <a href="https://facebook.com/moedwedding" target="_blank" rel="noopener noreferrer" aria-label="Facebook de MOED" class="text-brand-light hover:text-gold transition-colors"> <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path> </svg> </a> <a href="https://pinterest.com/moedwedding" target="_blank" rel="noopener noreferrer" aria-label="Pinterest de MOED" class="text-brand-light hover:text-gold transition-colors"> <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"></path> </svg> </a> <a href="https://tiktok.com/@moed.wedding" target="_blank" rel="noopener noreferrer" aria-label="TikTok de MOED" class="text-brand-light hover:text-gold transition-colors"> <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.54V6.78a4.85 4.85 0 0 1-1.07-.09z"></path> </svg> </a> </div> </div> <!-- Columna 2: Navegación --> <div> <h3 class="text-xs font-sans uppercase tracking-widest text-brand-light mb-6">Navegación</h3> <ul class="space-y-3"> <li> <a href="../" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Inicio </a> </li><li> <a href="../servicios/" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Servicios </a> </li><li> <a href="../portafolio/" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Portafolio </a> </li><li> <a href="../equipo/" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Equipo </a> </li><li> <a href="../contacto/" class="text-sm text-brand-light hover:text-white transition-colors duration-200"> Contacto </a> </li> <li> <a href="../landing/" class="text-sm text-brand-light hover:text-white transition-colors duration-200">
+Promo especial
+</a> </li> </ul> </div> <!-- Columna 3: Contacto --> <div> <h3 class="text-xs font-sans uppercase tracking-widest text-brand-light mb-6">Contacto</h3> <address class="not-italic space-y-3"> <p class="text-sm text-brand-light leading-relaxed">
+Calle 41 #230, Centro<br>
+Valladolid, Yucatán 97780<br>
+México
+</p> <p> <a href="tel:+529851002030" class="text-sm text-brand-light hover:text-white transition-colors">
++52 985 100 2030
+</a> </p> <p> <a href="mailto:edolara@gmail.com" class="text-sm text-brand-light hover:text-white transition-colors">
+edolara@gmail.com
+</a> </p> </address> </div> </div> <!-- Bottom bar --> <div class="border-t border-white/10"> <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3"> <p class="text-xs text-brand-light">© 2026 MOED Wedding Planning. Todos los derechos reservados.</p> <p class="text-xs text-brand-light">Valladolid, Yucatán · México</p> </div> </div> </footer> <!-- Global: scroll-reveal + parallax -->  </body> </html>
