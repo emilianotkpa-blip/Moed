@@ -578,6 +578,25 @@
   /* ═══════════════════════════════════════════════════════════
      INIT
   ════════════════════════════════════════════════════════════ */
+  /* ═══════════════════════════════════════════════════════════
+     PERSISTIR ?edit=1 al navegar entre páginas
+  ════════════════════════════════════════════════════════════ */
+  function enableEditPersistence() {
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href]');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      /* Solo links internos (relativos o mismo dominio, sin #ancla puro) */
+      if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')) return;
+      if (href.startsWith('#')) return;
+      /* Agregar ?edit=1 si no lo tiene ya */
+      if (href.includes('?edit')) return;
+      e.preventDefault();
+      const sep = href.includes('?') ? '&' : '?';
+      window.location.href = href + sep + 'edit=1';
+    }, true);
+  }
+
   function init() {
     buildToolbar();
     buildSizeBar();
@@ -585,6 +604,7 @@
     buildColorPanel();
     enableTextEditing();
     enableImageEditing();
+    enableEditPersistence();
     toast('Modo edición activo. Haz clic en cualquier texto o imagen para editar.', 'ok', 5000);
   }
 
