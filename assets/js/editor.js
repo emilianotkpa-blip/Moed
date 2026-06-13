@@ -232,14 +232,17 @@
      TOOLBAR
   ════════════════════════════════════════════════════════════ */
   function pushSiteNav() {
-    /* El nav del sitio es fixed top-0; bajarlo 48px con inline style (mayor prioridad que Tailwind) */
+    const OFFSET = '48px';
     const nav = document.getElementById('main-nav');
-    if (nav) nav.style.setProperty('top', '48px', 'important');
-    /* Landing tiene un header sticky propio */
+    if (nav) nav.style.setProperty('top', OFFSET, 'important');
     document.querySelectorAll('header').forEach(h => {
       if (h.id === 'main-nav') return;
       const pos = getComputedStyle(h).position;
-      if (pos === 'fixed' || pos === 'sticky') h.style.setProperty('top', '48px', 'important');
+      if (pos === 'fixed' || pos === 'sticky') h.style.setProperty('top', OFFSET, 'important');
+    });
+    /* Re-aplica después de que los módulos JS del sitio terminen de correr */
+    requestAnimationFrame(() => {
+      if (nav) nav.style.setProperty('top', OFFSET, 'important');
     });
   }
 
@@ -698,11 +701,11 @@
     }
   }
 
+  /* editor.js siempre corre al final del body (DOM listo) */
   if (sessionStorage.getItem('gh_token')) {
     init();
   } else {
-    document.addEventListener('DOMContentLoaded', () => { buildAuthModal(init); });
-    if (document.readyState !== 'loading') buildAuthModal(init);
+    buildAuthModal(init);
   }
 
 })();
