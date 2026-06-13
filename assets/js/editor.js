@@ -624,6 +624,8 @@
   ════════════════════════════════════════════════════════════ */
   function enableEditPersistence() {
     document.addEventListener('click', e => {
+      /* Si el clic es sobre una imagen editable, no navegar */
+      if (e.target.closest('img[data-med-img]')) return;
       const a = e.target.closest('a[href]');
       if (!a) return;
       const href = a.getAttribute('href');
