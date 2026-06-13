@@ -74,14 +74,9 @@
     [data-med-text]:hover{outline:1px dashed #C9A86A55;outline-offset:2px;cursor:text;}
     [data-med-text]:focus{outline:2px solid #C9A86A;outline-offset:3px;}
 
-    .med-img-wrap{position:relative;}
-    .med-img-wrap .med-img-overlay{position:absolute;inset:0;background:#C9A86A22;
-      display:flex;align-items:center;justify-content:center;opacity:0;
-      transition:opacity .2s;cursor:pointer;z-index:10;}
-    .med-img-wrap:hover .med-img-overlay{opacity:1;}
-    .med-img-overlay span{background:#0E0E0C;border:1px solid #C9A86A;
-      color:#C9A86A;font-size:11px;padding:6px 12px;border-radius:4px;
-      font-family:system-ui,sans-serif;pointer-events:none;}
+    /* Imágenes editables — sin tocar el DOM, solo cursor */
+    img[data-med-img]{cursor:pointer !important;outline:0 solid #C9A86A44;transition:outline .15s;}
+    img[data-med-img]:hover{outline:3px solid #C9A86A88;}
 
     #med-size-bar{position:fixed;z-index:2147483646;display:none;
       background:#111110;border:1px solid #2A2A25;border-radius:6px;
@@ -160,6 +155,10 @@
     #med-toast.err{background:#7f1d1d;color:#fecaca;border:1px solid #dc262655;}
 
     body{padding-top:48px !important;}
+    /* Bajar el nav del sitio para que no quede detrás de la barra del editor */
+    #main-nav{top:48px !important;}
+    /* Landing page tiene un header sticky propio */
+    header.sticky,header[class*="sticky"][class*="top-0"]{top:48px !important;}
   `;
   const styleEl = document.createElement('style');
   styleEl.textContent = editorCSS;
@@ -476,31 +475,22 @@
       if (img.closest('#moed-toolbar,#med-img-modal,#med-auth-modal')) return;
       const imgIdx = String(idx++);
 
-      /* Restaurar draft guardado */
+      /* Restaurar draft guardado sin tocar el DOM */
       if (draft.images[imgIdx]) {
         img.src = draft.images[imgIdx];
-        const wrap = img.closest('[data-src]');
-        if (wrap) wrap.dataset.src = draft.images[imgIdx];
+        const parent = img.closest('[data-src]');
+        if (parent) parent.dataset.src = draft.images[imgIdx];
       }
 
-      /* Wrap con overlay */
-      const wrap = document.createElement('span');
-      wrap.className = 'med-img-wrap';
-      /* Heredar display del img */
-      const display = getComputedStyle(img).display;
-      wrap.style.display = (display === 'block' || display === 'flex') ? 'block' : 'inline-block';
-      wrap.style.width  = '100%';
-      wrap.style.height = 'inherit';
+      /* Solo marcar el img con atributo + click handler, sin wrap */
+      img.dataset.medImg = imgIdx;
+      img.title = '📷 Clic para cambiar imagen';
 
-      const overlay = document.createElement('span');
-      overlay.className = 'med-img-overlay';
-      overlay.innerHTML = '<span>📷 Cambiar imagen</span>';
-
-      img.parentNode.insertBefore(wrap, img);
-      wrap.appendChild(img);
-      wrap.appendChild(overlay);
-
-      overlay.addEventListener('click', e => { e.stopPropagation(); openImgModal(img, imgIdx); });
+      img.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        openImgModal(img, imgIdx);
+      });
     });
   }
 
@@ -563,9 +553,11 @@
         el.style.cursor = '';
         if (!el.getAttribute('style')) el.removeAttribute('style');
       });
-      clone.querySelectorAll('.med-img-wrap').forEach(wrap => {
-        const img = wrap.querySelector('img');
-        if (img) wrap.parentNode.replaceChild(img, wrap);
+      clone.querySelectorAll('[data-med-img]').forEach(img => {
+        img.removeAttribute('data-med-img');
+        img.removeAttribute('title');
+        img.style.cursor = '';
+        if (!img.getAttribute('style')) img.removeAttribute('style');
       });
       clone.querySelector('body').style.paddingTop = '';
       if (!clone.querySelector('body').getAttribute('style')) clone.querySelector('body').removeAttribute('style');
