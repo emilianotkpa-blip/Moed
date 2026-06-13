@@ -155,10 +155,6 @@
     #med-toast.err{background:#7f1d1d;color:#fecaca;border:1px solid #dc262655;}
 
     body{padding-top:48px !important;}
-    /* Bajar el nav del sitio para que no quede detrás de la barra del editor */
-    #main-nav{top:48px !important;}
-    /* Landing page tiene un header sticky propio */
-    header.sticky,header[class*="sticky"][class*="top-0"]{top:48px !important;}
   `;
   const styleEl = document.createElement('style');
   styleEl.textContent = editorCSS;
@@ -235,6 +231,18 @@
   /* ═══════════════════════════════════════════════════════════
      TOOLBAR
   ════════════════════════════════════════════════════════════ */
+  function pushSiteNav() {
+    /* El nav del sitio es fixed top-0; bajarlo 48px con inline style (mayor prioridad que Tailwind) */
+    const nav = document.getElementById('main-nav');
+    if (nav) nav.style.setProperty('top', '48px', 'important');
+    /* Landing tiene un header sticky propio */
+    document.querySelectorAll('header').forEach(h => {
+      if (h.id === 'main-nav') return;
+      const pos = getComputedStyle(h).position;
+      if (pos === 'fixed' || pos === 'sticky') h.style.setProperty('top', '48px', 'important');
+    });
+  }
+
   function buildToolbar() {
     const bar = document.createElement('div');
     bar.id = 'moed-toolbar';
@@ -561,6 +569,14 @@
       });
       clone.querySelector('body').style.paddingTop = '';
       if (!clone.querySelector('body').getAttribute('style')) clone.querySelector('body').removeAttribute('style');
+      /* Limpiar top inline del nav que puso el editor */
+      const cloneNav = clone.querySelector('#main-nav');
+      if (cloneNav) { cloneNav.style.top = ''; if (!cloneNav.getAttribute('style')) cloneNav.removeAttribute('style'); }
+      clone.querySelectorAll('header').forEach(h => {
+        if (h.id === 'main-nav') return;
+        h.style.top = '';
+        if (!h.getAttribute('style')) h.removeAttribute('style');
+      });
 
       const html = '<!DOCTYPE html>\n' + clone.outerHTML;
 
@@ -666,6 +682,7 @@
      INIT
   ════════════════════════════════════════════════════════════ */
   function init() {
+    pushSiteNav();
     buildToolbar();
     buildSizeBar();
     buildImgModal();
