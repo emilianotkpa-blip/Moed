@@ -543,7 +543,7 @@
      GUARDAR → GITHUB API
   ════════════════════════════════════════════════════════════ */
   async function saveToGitHub() {
-    const token = sessionStorage.getItem('gh_token');
+    const token = localStorage.getItem('gh_token');
     if (!token) { toast('Sin token de GitHub', 'err'); return; }
 
     const btn = document.getElementById('med-btn-save');
@@ -670,7 +670,7 @@
           headers: { Authorization: 'token ' + tok }
         });
         if (!res.ok) throw new Error('invalid');
-        sessionStorage.setItem('gh_token', tok);
+        localStorage.setItem('gh_token', tok);
         modal.remove();
         onSuccess();
       } catch (_) {
@@ -704,7 +704,7 @@
   }
 
   /* editor.js siempre corre al final del body (DOM listo) */
-  if (sessionStorage.getItem('gh_token')) {
+  if (localStorage.getItem('gh_token')) {
     init();
   } else {
     buildAuthModal(init);
