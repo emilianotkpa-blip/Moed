@@ -123,6 +123,15 @@
     #med-img-modal .med-img-status.ok{color:#86efac;}
     #med-img-modal .med-img-status.err{color:#fca5a5;}
     #med-img-modal .med-modal-actions{display:flex;gap:10px;justify-content:flex-end;}
+    #med-img-modal .med-upload-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+    #med-img-modal .med-upload-btn{flex-shrink:0;cursor:pointer;background:#1A1A18;border:1px solid #2A2A25;
+      color:#C9A86A;font-size:12px;padding:8px 14px;border-radius:6px;font-family:inherit;
+      transition:border-color .15s;}
+    #med-img-modal .med-upload-btn:hover{border-color:#C9A86A;}
+    #med-img-modal .med-upload-btn:disabled{opacity:.4;cursor:not-allowed;}
+    #med-img-modal .med-upload-info{font-size:11px;color:#6B6560;flex:1;}
+    #med-img-modal .med-or-divider{text-align:center;color:#3A3A35;font-size:11px;
+      letter-spacing:.1em;margin:4px 0 10px;border-top:1px solid #2A2A25;padding-top:12px;}
     #med-img-modal button{cursor:pointer;border:1px solid #2A2A25;background:#1A1A18;
       color:#F5F0E6;font-size:12px;padding:8px 16px;border-radius:4px;font-family:inherit;}
     #med-img-modal #med-img-apply{background:#C9A86A;border-color:#C9A86A;
@@ -377,17 +386,46 @@
     return url;
   }
 
+  async function uploadImageToGitHub(file) {
+    const token = localStorage.getItem('gh_token');
+    if (!token) throw new Error('Sin token de GitHub');
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+    const safeName = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const path = 'assets/images/' + safeName;
+    const base64 = await new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(r.result.split(',')[1]);
+      r.onerror = rej;
+      r.readAsDataURL(file);
+    });
+    const put = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`,
+      {
+        method: 'PUT',
+        headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json' },
+        body: JSON.stringify({ message: 'Editor MOED: imagen ' + safeName, content: base64, branch: GH_BRANCH }),
+      }
+    );
+    if (!put.ok) { const e = await put.json(); throw new Error(e.message || 'Error al subir'); }
+    return `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${path}`;
+  }
+
   function buildImgModal() {
     const modal = document.createElement('div');
     modal.id = 'med-img-modal';
     modal.innerHTML = `
       <div class="med-modal-box">
         <h3>Cambiar imagen</h3>
+        <div class="med-upload-row">
+          <input type="file" id="med-file-input" accept="image/*" style="display:none">
+          <button class="med-upload-btn" id="med-upload-btn" type="button">📁 Subir desde computadora</button>
+          <span class="med-upload-info" id="med-upload-info">JPG, PNG, WebP — se sube al sitio automáticamente</span>
+        </div>
+        <div class="med-or-divider">— o pega una URL —</div>
         <p class="med-url-hint">
-          Pega una URL directa de imagen (.jpg, .png, .webp).<br>
           ✅ Unsplash &nbsp;·&nbsp; ✅ WordPress / tu hosting &nbsp;·&nbsp; ✅ Dropbox &nbsp;·&nbsp; ✅ Imgur<br>
-          ⚠️ Google Drive: comparte el archivo como "Cualquier persona con el enlace"<br>
-          ❌ Google Photos &nbsp;·&nbsp; ❌ Instagram &nbsp;·&nbsp; ❌ URLs que requieren login
+          ⚠️ Google Drive: comparte como "Cualquier persona con el enlace"<br>
+          ❌ Google Photos &nbsp;·&nbsp; ❌ Instagram
         </p>
         <input id="med-img-url" type="url" placeholder="https://...">
         <div class="med-preview-wrap">
@@ -403,11 +441,43 @@
     `;
     document.body.appendChild(modal);
 
-    const urlInput  = document.getElementById('med-img-url');
-    const preview   = document.getElementById('med-img-preview');
-    const previewMsg= document.getElementById('med-preview-msg');
-    const statusEl  = document.getElementById('med-img-status');
-    const applyBtn  = document.getElementById('med-img-apply');
+    const urlInput   = document.getElementById('med-img-url');
+    const preview    = document.getElementById('med-img-preview');
+    const previewMsg = document.getElementById('med-preview-msg');
+    const statusEl   = document.getElementById('med-img-status');
+    const applyBtn   = document.getElementById('med-img-apply');
+    const fileInput  = document.getElementById('med-file-input');
+    const uploadBtn  = document.getElementById('med-upload-btn');
+    const uploadInfo = document.getElementById('med-upload-info');
+
+    uploadBtn.onclick = () => fileInput.click();
+    fileInput.addEventListener('change', async () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+      uploadBtn.disabled = true;
+      uploadInfo.textContent = 'Subiendo…';
+      statusEl.className = 'med-img-status';
+      statusEl.textContent = '';
+      applyBtn.disabled = true;
+      try {
+        const url = await uploadImageToGitHub(file);
+        urlInput.value = url;
+        preview.src = url;
+        preview.style.display = 'block';
+        previewMsg.textContent = '';
+        statusEl.className = 'med-img-status ok';
+        statusEl.textContent = '✓ Imagen subida al sitio';
+        uploadInfo.textContent = file.name;
+        applyBtn.disabled = false;
+      } catch (err) {
+        statusEl.className = 'med-img-status err';
+        statusEl.textContent = '✗ ' + err.message;
+        uploadInfo.textContent = 'Error al subir';
+      } finally {
+        uploadBtn.disabled = false;
+        fileInput.value = '';
+      }
+    });
 
     let debTimer;
     urlInput.addEventListener('input', () => {
