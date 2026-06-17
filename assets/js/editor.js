@@ -680,7 +680,15 @@
       document.getElementById('med-dirty').classList.remove('show');
       btn.textContent = '✓ Guardado';
       setTimeout(() => { btn.textContent = '💾 Guardar'; btn.disabled = false; }, 3000);
-      toast('¡Guardado! El sitio se actualizará en ~30 segundos.', 'ok');
+
+      /* Disparar deploy en EasyPanel si está configurado */
+      const deployUrl = localStorage.getItem('easypanel_url');
+      if (deployUrl) {
+        try { await fetch(deployUrl, { mode: 'no-cors' }); } catch (_) {}
+        toast('¡Guardado! Desplegando sitio…', 'ok');
+      } else {
+        toast('¡Guardado! El sitio se actualizará en ~30 segundos.', 'ok');
+      }
 
     } catch (err) {
       btn.textContent = '💾 Guardar';
@@ -722,13 +730,18 @@
            para poder guardar cambios en el sitio.</p>
         <input id="med-token-input" type="password" placeholder="github_pat_..." autocomplete="off">
         <div class="med-err" id="med-token-err">Token inválido o sin permisos de escritura.</div>
+        <p style="color:#6B6560;font-size:11px;margin:12px 0 6px;text-align:left;">URL de deploy de EasyPanel <span style="color:#3A3A35">(opcional — activa deploy automático al guardar)</span></p>
+        <input id="med-deploy-input" type="url" placeholder="http://...easypanel.../api/deploy/..." autocomplete="off" style="margin-bottom:4px;">
         <button id="med-token-btn">Entrar al editor</button>
       </div>
     `;
     document.body.appendChild(modal);
-    const input = document.getElementById('med-token-input');
-    const errEl = document.getElementById('med-token-err');
-    const btn   = document.getElementById('med-token-btn');
+    const input      = document.getElementById('med-token-input');
+    const deployInp  = document.getElementById('med-deploy-input');
+    const errEl      = document.getElementById('med-token-err');
+    const btn        = document.getElementById('med-token-btn');
+    /* Pre-llenar si ya estaban guardados */
+    if (localStorage.getItem('easypanel_url')) deployInp.value = localStorage.getItem('easypanel_url');
     async function tryToken() {
       const tok = input.value.trim();
       if (!tok) return;
@@ -741,6 +754,8 @@
         });
         if (!res.ok) throw new Error('invalid');
         localStorage.setItem('gh_token', tok);
+        const dep = deployInp.value.trim();
+        if (dep) localStorage.setItem('easypanel_url', dep);
         modal.remove();
         onSuccess();
       } catch (_) {
