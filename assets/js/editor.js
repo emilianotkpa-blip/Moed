@@ -837,6 +837,18 @@
         if (!h.getAttribute('style')) h.removeAttribute('style');
       });
 
+      /* Marca de revisión: es lo que se busca luego en el sitio publicado para
+         saber si el despliegue llegó de verdad. Sin ella no hay forma de
+         distinguir "ya se desplegó" de "sigue la versión de antes". */
+      const rev = String(Date.now());
+      let metaRev = clone.querySelector('meta[name="med-rev"]');
+      if (!metaRev) {
+        metaRev = document.createElement('meta');
+        metaRev.setAttribute('name', 'med-rev');
+        clone.querySelector('head').appendChild(metaRev);
+      }
+      metaRev.setAttribute('content', rev);
+
       const html = '<!DOCTYPE html>\n' + clone.outerHTML;
 
       const getRes = await fetch(
@@ -867,13 +879,17 @@
       btn.textContent = '✓ Guardado';
       setTimeout(() => { btn.textContent = '💾 Guardar'; btn.disabled = false; }, 3000);
 
-      /* Disparar deploy en EasyPanel si está configurado */
+      /* Disparar deploy en EasyPanel si está configurado, y comprobarlo */
       const deployUrl = localStorage.getItem('easypanel_url');
       if (deployUrl) {
+        toast('Guardado. Desplegando el sitio…', 'ok', 4000);
+        /* `no-cors`: el panel está en otro dominio, así que la respuesta no se
+           puede leer. Da igual: lo que vale es mirar el sitio publicado. */
         try { await fetch(deployUrl, { mode: 'no-cors' }); } catch (_) {}
-        toast('¡Guardado! Desplegando sitio…', 'ok');
+        comprobarDespliegue(rev);
       } else {
-        toast('¡Guardado! El sitio se actualizará en ~30 segundos.', 'ok');
+        toast('Guardado en GitHub. Sin URL de deploy configurada: el sitio no se '
+            + 'actualiza solo desde aquí.', 'ok', 7000);
       }
 
     } catch (err) {
@@ -881,6 +897,35 @@
       btn.disabled = false;
       toast('Error: ' + err.message, 'err', 6000);
     }
+  }
+
+  /**
+   * Mira el sitio publicado hasta encontrar la revisión que se acaba de subir.
+   *
+   * Es lo que separa "guardé" de "está en vivo". El caso real que lo motivó:
+   * cambiar una imagen sube DOS commits (la imagen y el HTML), y si el deploy
+   * sale con el primero, el sitio se queda con el HTML anterior — todo parece
+   * correcto y la imagen no aparece por ningún lado.
+   */
+  async function comprobarDespliegue(rev) {
+    const HASTA = 150000;   // 2 min y medio: un build de este sitio tarda ~30-60 s
+    const CADA  = 5000;
+    const limite = Date.now() + HASTA;
+
+    while (Date.now() < limite) {
+      await new Promise(r => setTimeout(r, CADA));
+      try {
+        /* Cache-buster + no-store: sin esto el navegador contesta con lo que ya
+           tenía y la comprobación diría que sí sin haber mirado nada. */
+        const res = await fetch(window.location.pathname + '?med=' + Date.now(), { cache: 'no-store' });
+        if (res.ok && (await res.text()).includes(rev)) {
+          toast('✓ El sitio ya está publicado con tus cambios.', 'ok', 6000);
+          return;
+        }
+      } catch (_) { /* el servidor puede estar reiniciando a mitad del build */ }
+    }
+    toast('Guardado en GitHub, pero el sitio sigue mostrando la versión anterior. '
+        + 'Entra a EasyPanel y dale a Implementar.', 'err', 12000);
   }
 
   /* ═══════════════════════════════════════════════════════════
