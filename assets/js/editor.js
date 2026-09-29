@@ -26,6 +26,7 @@
   if (!draft.texts)   draft.texts   = {};
   if (!draft.images)  draft.images  = {};
   if (!draft.botones) draft.botones = {};
+  if (!draft.enlaces) draft.enlaces = {};
 
   function saveDraft() {
     try { sessionStorage.setItem(PAGE_KEY, JSON.stringify(draft)); } catch (_) {}
@@ -96,6 +97,9 @@
       border:1px solid #3A3A35;cursor:pointer;overflow:hidden;flex-shrink:0;}
     #med-size-bar .med-swatch input{position:absolute;inset:-4px;width:calc(100% + 8px);
       height:calc(100% + 8px);border:none;padding:0;cursor:pointer;background:none;}
+    #med-size-bar .med-href{background:#0A0A08;border:1px solid #2A2A25;border-radius:4px;
+      color:#F5F0E6;font:inherit;font-size:11px;padding:3px 6px;width:130px;min-width:130px;}
+    #med-size-bar .med-href:focus{outline:none;border-color:#C9A86A;}
     #med-size-bar .med-reset{color:#6B6560;font-size:13px;}
     #med-size-bar .med-reset:hover{color:#C9A86A;}
 
@@ -303,6 +307,12 @@
     let idx = 0;
     document.querySelectorAll(TEXT_SEL).forEach(el => {
       if (el.closest('#moed-toolbar,#med-color-panel,#med-img-modal,#med-auth-modal,#med-size-bar')) return;
+      /* Nada de editables dentro de editables. El menú es <li><a>Servicios</a></li>:
+         si el <li> también fuera editable, se quedaría el foco al pulsar el
+         enlace y la barra se repintaría como si fuera un texto suelto — sin el
+         campo del destino. Manda lo de dentro, que es lo concreto. */
+      if (el.querySelector('[data-med-link],[data-med-btn]')) return;
+      if (el.closest('[data-med-link],[data-med-btn]')) return;
 
       const id = String(idx++);
       el.dataset.medText = id;
@@ -413,6 +423,23 @@
       enlazarColor('med-bg', 'backgroundColor', 'background');
       enlazarColor('med-fg', 'color', 'color');
       enlazarColor('med-bd', 'borderColor', 'borderColor');
+    } else if (tipo === 'enlace') {
+      sizeBar.innerHTML =
+        muestra('med-fg', 'Color', aHex(cs.color)) +
+        `<span class="med-sep"></span>` +
+        `<span class="med-tag">Lleva a</span>` +
+        `<input class="med-href" id="med-href" value="${(el.getAttribute('href') || '').replace(/"/g, '&quot;')}" title="A dónde lleva este enlace">` +
+        `<button class="med-reset" id="med-quitar" title="Quitar el color puesto aquí">⟲</button>`;
+      enlazarColor('med-fg', 'color', 'color');
+      const campo = document.getElementById('med-href');
+      campo.addEventListener('input', () => {
+        if (!elemBarra) return;
+        elemBarra.setAttribute('href', campo.value);
+        apuntarEnDraft(elemBarra, 'href', campo.value);
+        markDirty();
+      });
+      /* Escribir en el campo no debe mover el cursor del texto ni cerrar la barra. */
+      campo.addEventListener('keydown', e => e.stopPropagation());
     } else {
       sizeBar.innerHTML =
         `<button id="med-sz-down">A−</button><span id="med-sz-val">${Math.round(parseFloat(cs.fontSize))}px</span><button id="med-sz-up">A+</button>` +
@@ -463,7 +490,11 @@
 
   /* Deja el cambio anotado en el borrador para que sobreviva a una recarga. */
   function apuntarEnDraft(el, clave, valor) {
-    if (el.dataset.medBtn !== undefined) {
+    if (el.dataset.medLink !== undefined) {
+      const id = el.dataset.medLink;
+      draft.enlaces[id] = draft.enlaces[id] || { html: el.innerHTML };
+      draft.enlaces[id][clave] = valor;
+    } else if (el.dataset.medBtn !== undefined) {
       const id = el.dataset.medBtn;
       draft.botones[id] = draft.botones[id] || { html: el.innerHTML };
       draft.botones[id][clave] = valor;
@@ -528,6 +559,42 @@
       el.addEventListener('focus', () => mostrarBarra(el, 'boton'));
       el.addEventListener('blur', () => {
         draft.botones[id] = Object.assign({}, draft.botones[id], { html: el.innerHTML });
+        saveDraft();
+        markDirty();
+      });
+      el.addEventListener('keydown', e => { if (e.key === 'Escape') { e.preventDefault(); el.blur(); } });
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     EDICIÓN DE ENLACES
+     Un enlace solo navegaba: no había forma de cambiar "Servicios" por otra
+     cosa. Ahora el clic izquierdo edita y el DERECHO navega — algo tenía que
+     ceder, y perder el clic izquierdo es lo barato.
+  ════════════════════════════════════════════════════════════ */
+  function enableLinkEditing() {
+    let idx = 0;
+    document.querySelectorAll('a[href]').forEach(el => {
+      if (el.closest('#moed-toolbar,#med-color-panel,#med-img-modal,#med-auth-modal,#med-size-bar')) return;
+      if (el.dataset.medBtn !== undefined) return;   // los botones ya tienen lo suyo
+      if (el.querySelector('img')) return;           // enlaces con imagen: manda la imagen
+      if (!el.textContent.trim()) return;            // iconos sueltos, nada que editar
+
+      const id = String(idx++);
+      el.dataset.medLink = id;
+      el.setAttribute('contenteditable', 'true');
+
+      const g = draft.enlaces[id];
+      if (g) {
+        if (g.html)  el.innerHTML  = g.html;
+        if (g.color) el.style.color = g.color;
+        if (g.href)  el.setAttribute('href', g.href);
+      }
+
+      el.addEventListener('pointerdown', () => mostrarBarra(el, 'enlace'));
+      el.addEventListener('focus', () => mostrarBarra(el, 'enlace'));
+      el.addEventListener('blur', () => {
+        draft.enlaces[id] = Object.assign({}, draft.enlaces[id], { html: el.innerHTML });
         saveDraft();
         markDirty();
       });
@@ -815,6 +882,11 @@
         el.style.cursor = '';
         if (!el.getAttribute('style')) el.removeAttribute('style');
       });
+      clone.querySelectorAll('[data-med-link]').forEach(el => {
+        el.removeAttribute('contenteditable');
+        el.removeAttribute('data-med-link');
+        if (!el.getAttribute('style')) el.removeAttribute('style');
+      });
       clone.querySelectorAll('[data-med-btn]').forEach(el => {
         el.removeAttribute('contenteditable');
         el.removeAttribute('data-med-btn');
@@ -936,6 +1008,7 @@
       /* Si el clic es sobre algo editable, no navegar */
       if (e.target.closest('img[data-med-img]')) return;
       if (e.target.closest('[data-med-btn]')) return;
+      if (e.target.closest('[data-med-link]')) return;   // para eso está el clic derecho
       const a = e.target.closest('a[href]');
       if (!a) return;
       const href = a.getAttribute('href');
@@ -946,6 +1019,19 @@
       const sep = href.includes('?') ? '&' : '?';
       window.location.href = href + sep + 'edit=1';
     }, true);
+
+    /* Clic DERECHO sobre un enlace: navegar, que es lo que el izquierdo dejó
+       de hacer al volverse editable. Se conserva el ?edit=1. */
+    document.addEventListener('contextmenu', e => {
+      const a = e.target.closest('a[data-med-link],a[data-med-btn]');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      e.preventDefault();
+      if (/^(https?:|mailto:|tel:)/.test(href)) { window.open(href, '_blank'); return; }
+      const sep = href.includes('?') ? '&' : '?';
+      window.location.href = href.includes('edit=') ? href : href + sep + 'edit=1';
+    });
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -1009,15 +1095,19 @@
     buildSizeBar();
     buildImgModal();
     buildColorPanel();
-    enableTextEditing();
+    /* Orden a propósito: primero lo concreto (botones, enlaces) y luego los
+       textos, que se apartan de lo que ya esté marcado. */
     enableButtonEditing();
+    enableLinkEditing();
+    enableTextEditing();
     enableImageEditing();
     enableEditPersistence();
-    if (Object.keys(draft.texts).length || Object.keys(draft.images).length || Object.keys(draft.botones).length) {
+    if (Object.keys(draft.texts).length || Object.keys(draft.images).length
+        || Object.keys(draft.botones).length || Object.keys(draft.enlaces).length) {
       markDirty();
       toast('Cambios no guardados restaurados.', 'ok', 3000);
     } else {
-      toast('Modo edición activo. Toca un texto, un botón o una imagen para editarlo.', 'ok', 5000);
+      toast('Modo edición activo. Clic para editar · clic DERECHO en un enlace para ir a esa página.', 'ok', 7000);
     }
   }
 
