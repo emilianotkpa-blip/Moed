@@ -360,12 +360,35 @@
     sizeBar.id = 'med-size-bar';
     document.body.appendChild(sizeBar);
 
+    /* Al desplazar o cambiar de tamaño, la barra sigue a su elemento. */
+    ['scroll', 'resize'].forEach(ev =>
+      window.addEventListener(ev, () => { if (elemBarra) colocarBarra(); }, { passive: true }));
+
     /* Un solo portero decide cuándo se va la barra. */
     document.addEventListener('pointerdown', e => {
       if (e.target.closest('#med-size-bar')) return;                    // la estás usando
       if (e.target.closest('[data-med-text],[data-med-btn]')) return;   // pasas a otro elemento
       ocultarBarra();
     }, true);
+  }
+
+  /**
+   * Coloca la barra sobre el elemento.
+   *
+   * OJO: la barra es `position: fixed`, y eso mide desde la VENTANA, no desde
+   * el documento. Sumarle `window.scrollY` la mandaba tan abajo como llevaras
+   * bajado: arriba del todo funcionaba de casualidad (scroll 0) y a partir de
+   * ahi desaparecia. Si no cabe encima del elemento, se pone debajo, y siempre
+   * dentro de los bordes de la ventana.
+   */
+  function colocarBarra() {
+    if (!elemBarra || !sizeBar) return;
+    const r = elemBarra.getBoundingClientRect();
+    const ancho = sizeBar.offsetWidth || 260;
+    const arriba = r.top - 44 >= 56 ? r.top - 44
+                 : Math.min(window.innerHeight - 44, r.bottom + 8);
+    sizeBar.style.top  = Math.max(56, arriba) + 'px';
+    sizeBar.style.left = Math.max(8, Math.min(r.left, window.innerWidth - ancho - 8)) + 'px';
   }
 
   function ocultarBarra() {
@@ -403,10 +426,8 @@
 
     document.getElementById('med-quitar').onclick = quitarColores;
 
-    const rect = el.getBoundingClientRect();
-    sizeBar.style.top  = Math.max(56, rect.top + window.scrollY - 44) + 'px';
-    sizeBar.style.left = Math.max(8, rect.left) + 'px';
     sizeBar.classList.add('show');
+    colocarBarra();
   }
 
   /* `input` y no `change`: se ve el color al momento, mientras arrastras. */
