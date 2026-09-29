@@ -21,9 +21,11 @@
   const PAGE_KEY = 'moed_draft_' + window.location.pathname;
   let draft = {};
   try { draft = JSON.parse(sessionStorage.getItem(PAGE_KEY) || '{}'); } catch (_) {}
-  /* draft = { texts: {idx: {html, fontSize}}, images: {idx: src} } */
-  if (!draft.texts)  draft.texts  = {};
-  if (!draft.images) draft.images = {};
+  /* draft = { texts:{idx:{html,fontSize,color}}, images:{idx:src},
+               botones:{idx:{html,background,color,borderColor}} } */
+  if (!draft.texts)   draft.texts   = {};
+  if (!draft.images)  draft.images  = {};
+  if (!draft.botones) draft.botones = {};
 
   function saveDraft() {
     try { sessionStorage.setItem(PAGE_KEY, JSON.stringify(draft)); } catch (_) {}
@@ -86,6 +88,20 @@
     #med-size-bar button{background:none;border:none;color:#C9A86A;
       font-size:16px;cursor:pointer;padding:2px 4px;line-height:1;}
     #med-size-bar span{min-width:36px;text-align:center;color:#F5F0E6;}
+    #med-size-bar .med-sep{width:1px;height:18px;background:#2A2A25;min-width:1px;}
+    #med-size-bar .med-tag{color:#6B6560;font-size:10px;text-transform:uppercase;
+      letter-spacing:.06em;min-width:0;}
+    /* La muestra de color: un cuadrito que ES el input, para que quepa en la barra */
+    #med-size-bar .med-swatch{position:relative;width:20px;height:20px;border-radius:4px;
+      border:1px solid #3A3A35;cursor:pointer;overflow:hidden;flex-shrink:0;}
+    #med-size-bar .med-swatch input{position:absolute;inset:-4px;width:calc(100% + 8px);
+      height:calc(100% + 8px);border:none;padding:0;cursor:pointer;background:none;}
+    #med-size-bar .med-reset{color:#6B6560;font-size:13px;}
+    #med-size-bar .med-reset:hover{color:#C9A86A;}
+
+    /* Los botones se marcan como editables, igual que las imagenes */
+    [data-med-btn]{outline:0 solid #C9A86A44;transition:outline .15s;}
+    [data-med-btn]:hover{outline:2px dashed #C9A86A88;outline-offset:3px;}
 
     #med-color-panel{position:fixed;top:56px;right:16px;z-index:2147483646;
       background:#111110;border:1px solid #2A2A25;border-radius:8px;
@@ -297,17 +313,20 @@
       if (draft.texts[id]) {
         el.innerHTML = draft.texts[id].html;
         if (draft.texts[id].fontSize) el.style.fontSize = draft.texts[id].fontSize;
+        if (draft.texts[id].color)    el.style.color    = draft.texts[id].color;
       }
 
       el.addEventListener('focus', () => {
         activeFocused = el;
-        showSizeBar(el);
+        mostrarBarra(el, 'texto');
       });
       el.addEventListener('blur', () => {
-        /* Guardar en draft */
-        draft.texts[id] = { html: el.innerHTML, fontSize: el.style.fontSize || '' };
+        /* Guardar en draft SIN tocar lo que ya tenga (tamaño, color) */
+        draft.texts[id] = Object.assign({}, draft.texts[id], {
+          html: el.innerHTML,
+          fontSize: el.style.fontSize || '',
+        });
         saveDraft();
-        hideSizeBar();
         activeFocused = null;
         markDirty();
       });
@@ -315,43 +334,184 @@
     });
   }
 
-  /* ── Mini-toolbar tamaño ─────────────────────────────────── */
+  /* ── Barra flotante del elemento ─────────────────────────────
+     Antes solo cambiaba el tamaño y se escondía en cuanto el elemento perdía
+     el foco. Eso ya no vale: un selector de color roba el foco al abrirse, así
+     que la barra desaparecía justo al ir a usarla. Ahora la barra apunta a un
+     elemento (`elemBarra`) y solo se va cuando pulsas fuera de ella y fuera de
+     cualquier cosa editable. */
+  let elemBarra = null;
+
+  /* `rgb(...)` → `#rrggbb`, que es lo único que traga <input type="color">. */
+  function aHex(css) {
+    const m = String(css || '').match(/rgba?\(([^)]+)\)/);
+    if (!m) return /^#[0-9a-f]{6}$/i.test(css) ? css : '#000000';
+    const [r, g, b] = m[1].split(',').map(n => Math.max(0, Math.min(255, parseInt(n, 10) || 0)));
+    return '#' + [r, g, b].map(n => n.toString(16).padStart(2, '0')).join('');
+  }
+
+  function muestra(id, titulo, valor) {
+    return `<span class="med-tag">${titulo}</span>` +
+           `<span class="med-swatch" style="background:${valor}"><input type="color" id="${id}" value="${valor}"></span>`;
+  }
+
   function buildSizeBar() {
     sizeBar = document.createElement('div');
     sizeBar.id = 'med-size-bar';
-    sizeBar.innerHTML = `<button id="med-sz-down">A−</button><span id="med-sz-val">16px</span><button id="med-sz-up">A+</button>`;
     document.body.appendChild(sizeBar);
-    document.getElementById('med-sz-down').onmousedown = e => { e.preventDefault(); changeSize(-2); };
-    document.getElementById('med-sz-up').onmousedown  = e => { e.preventDefault(); changeSize(+2); };
+
+    /* Un solo portero decide cuándo se va la barra. */
+    document.addEventListener('pointerdown', e => {
+      if (e.target.closest('#med-size-bar')) return;                    // la estás usando
+      if (e.target.closest('[data-med-text],[data-med-btn]')) return;   // pasas a otro elemento
+      ocultarBarra();
+    }, true);
   }
 
-  function showSizeBar(el) {
+  function ocultarBarra() {
+    elemBarra = null;
+    sizeBar && sizeBar.classList.remove('show');
+  }
+
+  /* Coloca la barra sobre el elemento y la llena según lo que sea. */
+  function mostrarBarra(el, tipo) {
     if (!sizeBar) return;
+    elemBarra = el;
+    const cs = getComputedStyle(el);
+
+    if (tipo === 'boton') {
+      sizeBar.innerHTML =
+        muestra('med-bg', 'Fondo', aHex(cs.backgroundColor)) +
+        `<span class="med-sep"></span>` +
+        muestra('med-fg', 'Letra', aHex(cs.color)) +
+        `<span class="med-sep"></span>` +
+        muestra('med-bd', 'Borde', aHex(cs.borderTopColor)) +
+        `<button class="med-reset" id="med-quitar" title="Quitar los colores puestos aquí">⟲</button>`;
+      enlazarColor('med-bg', 'backgroundColor', 'background');
+      enlazarColor('med-fg', 'color', 'color');
+      enlazarColor('med-bd', 'borderColor', 'borderColor');
+    } else {
+      sizeBar.innerHTML =
+        `<button id="med-sz-down">A−</button><span id="med-sz-val">${Math.round(parseFloat(cs.fontSize))}px</span><button id="med-sz-up">A+</button>` +
+        `<span class="med-sep"></span>` +
+        muestra('med-fg', 'Color', aHex(cs.color)) +
+        `<button class="med-reset" id="med-quitar" title="Quitar el color puesto aquí">⟲</button>`;
+      document.getElementById('med-sz-down').onmousedown = e => { e.preventDefault(); changeSize(-2); };
+      document.getElementById('med-sz-up').onmousedown  = e => { e.preventDefault(); changeSize(+2); };
+      enlazarColor('med-fg', 'color', 'color');
+    }
+
+    document.getElementById('med-quitar').onclick = quitarColores;
+
     const rect = el.getBoundingClientRect();
-    const sz   = Math.round(parseFloat(getComputedStyle(el).fontSize));
-    document.getElementById('med-sz-val').textContent = sz + 'px';
     sizeBar.style.top  = Math.max(56, rect.top + window.scrollY - 44) + 'px';
-    sizeBar.style.left = rect.left + 'px';
+    sizeBar.style.left = Math.max(8, rect.left) + 'px';
     sizeBar.classList.add('show');
   }
 
-  function hideSizeBar() {
-    setTimeout(() => { if (!activeFocused) sizeBar && sizeBar.classList.remove('show'); }, 80);
+  /* `input` y no `change`: se ve el color al momento, mientras arrastras. */
+  function enlazarColor(inputId, propCss, clave) {
+    const inp = document.getElementById(inputId);
+    if (!inp) return;
+    inp.addEventListener('input', () => {
+      if (!elemBarra) return;
+      elemBarra.style[propCss] = inp.value;
+      /* El borde solo se ve si hay estilo y grosor; los botones fantasma no traen. */
+      if (propCss === 'borderColor' && getComputedStyle(elemBarra).borderTopWidth === '0px') {
+        elemBarra.style.borderStyle = 'solid';
+        elemBarra.style.borderWidth = '1px';
+      }
+      inp.parentElement.style.background = inp.value;
+      apuntarEnDraft(elemBarra, clave, inp.value);
+      markDirty();
+    });
+  }
+
+  function quitarColores() {
+    if (!elemBarra) return;
+    const tipo = elemBarra.dataset.medBtn !== undefined ? 'boton' : 'texto';
+    ['color', 'background', 'backgroundColor', 'borderColor', 'borderStyle', 'borderWidth'].forEach(k => {
+      elemBarra.style[k] = '';
+    });
+    apuntarEnDraft(elemBarra, 'color', '');
+    apuntarEnDraft(elemBarra, 'background', '');
+    apuntarEnDraft(elemBarra, 'borderColor', '');
+    markDirty();
+    mostrarBarra(elemBarra, tipo);   // repintar las muestras con los valores del tema
+  }
+
+  /* Deja el cambio anotado en el borrador para que sobreviva a una recarga. */
+  function apuntarEnDraft(el, clave, valor) {
+    if (el.dataset.medBtn !== undefined) {
+      const id = el.dataset.medBtn;
+      draft.botones[id] = draft.botones[id] || { html: el.innerHTML };
+      draft.botones[id][clave] = valor;
+    } else if (el.dataset.medText !== undefined) {
+      const id = el.dataset.medText;
+      draft.texts[id] = draft.texts[id] || { html: el.innerHTML };
+      draft.texts[id][clave] = valor;
+    }
+    saveDraft();
   }
 
   function changeSize(delta) {
-    if (!activeFocused) return;
-    const cur  = parseFloat(getComputedStyle(activeFocused).fontSize) || 16;
+    if (!elemBarra) return;
+    const cur  = parseFloat(getComputedStyle(elemBarra).fontSize) || 16;
     const next = Math.max(8, cur + delta);
-    activeFocused.style.fontSize = next + 'px';
-    document.getElementById('med-sz-val').textContent = Math.round(next) + 'px';
-    const id = activeFocused.dataset.medText;
-    if (id !== undefined) {
-      draft.texts[id] = draft.texts[id] || { html: activeFocused.innerHTML };
-      draft.texts[id].fontSize = next + 'px';
-      saveDraft();
-    }
+    elemBarra.style.fontSize = next + 'px';
+    const val = document.getElementById('med-sz-val');
+    if (val) val.textContent = Math.round(next) + 'px';
+    apuntarEnDraft(elemBarra, 'fontSize', next + 'px');
     markDirty();
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     EDICIÓN DE BOTONES
+     Los botones son <a> con clase `btn-*` o `nav-cta`, así que no entraban en
+     TEXT_SEL y no había forma de tocarlos: ni su texto ni sus colores.
+  ════════════════════════════════════════════════════════════ */
+  const BTN_SEL = 'a.btn-primary,a.btn-outline,a.btn-ghost,a.nav-cta,' +
+                  'button.btn-primary,button.btn-outline,button.btn-ghost';
+
+  function enableButtonEditing() {
+    let idx = 0;
+    document.querySelectorAll(BTN_SEL).forEach(el => {
+      if (el.closest('#moed-toolbar,#med-color-panel,#med-img-modal,#med-auth-modal,#med-size-bar')) return;
+
+      const id = String(idx++);
+      el.dataset.medBtn = id;
+      el.setAttribute('contenteditable', 'true');
+
+      const guardado = draft.botones[id];
+      if (guardado) {
+        if (guardado.html)        el.innerHTML          = guardado.html;
+        /* `backgroundColor` y no el atajo `background`: el atajo borraría un
+           degradado o una imagen de fondo que el botón ya tuviera, y además así
+           coincide con lo que hace la edición en vivo. */
+        if (guardado.background)  el.style.backgroundColor = guardado.background;
+        if (guardado.color)       el.style.color        = guardado.color;
+        if (guardado.borderColor) {
+          el.style.borderColor = guardado.borderColor;
+          if (getComputedStyle(el).borderTopWidth === '0px') {
+            el.style.borderStyle = 'solid';
+            el.style.borderWidth = '1px';
+          }
+        }
+      }
+
+      /* Un botón es un enlace: sin esto, tocarlo para editarlo te saca de la
+         página. En modo edición se edita, no se navega. */
+      el.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); }, true);
+
+      el.addEventListener('pointerdown', () => mostrarBarra(el, 'boton'));
+      el.addEventListener('focus', () => mostrarBarra(el, 'boton'));
+      el.addEventListener('blur', () => {
+        draft.botones[id] = Object.assign({}, draft.botones[id], { html: el.innerHTML });
+        saveDraft();
+        markDirty();
+      });
+      el.addEventListener('keydown', e => { if (e.key === 'Escape') { e.preventDefault(); el.blur(); } });
+    });
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -634,6 +794,11 @@
         el.style.cursor = '';
         if (!el.getAttribute('style')) el.removeAttribute('style');
       });
+      clone.querySelectorAll('[data-med-btn]').forEach(el => {
+        el.removeAttribute('contenteditable');
+        el.removeAttribute('data-med-btn');
+        if (!el.getAttribute('style')) el.removeAttribute('style');
+      });
       clone.querySelectorAll('[data-med-img]').forEach(img => {
         img.removeAttribute('data-med-img');
         img.removeAttribute('title');
@@ -702,8 +867,9 @@
   ════════════════════════════════════════════════════════════ */
   function enableEditPersistence() {
     document.addEventListener('click', e => {
-      /* Si el clic es sobre una imagen editable, no navegar */
+      /* Si el clic es sobre algo editable, no navegar */
       if (e.target.closest('img[data-med-img]')) return;
+      if (e.target.closest('[data-med-btn]')) return;
       const a = e.target.closest('a[href]');
       if (!a) return;
       const href = a.getAttribute('href');
@@ -778,13 +944,14 @@
     buildImgModal();
     buildColorPanel();
     enableTextEditing();
+    enableButtonEditing();
     enableImageEditing();
     enableEditPersistence();
-    if (Object.keys(draft.texts).length || Object.keys(draft.images).length) {
+    if (Object.keys(draft.texts).length || Object.keys(draft.images).length || Object.keys(draft.botones).length) {
       markDirty();
       toast('Cambios no guardados restaurados.', 'ok', 3000);
     } else {
-      toast('Modo edición activo. Haz clic en cualquier texto o imagen para editar.', 'ok', 5000);
+      toast('Modo edición activo. Toca un texto, un botón o una imagen para editarlo.', 'ok', 5000);
     }
   }
 
