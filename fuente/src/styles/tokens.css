@@ -1,0 +1,59 @@
+/* ============================================================
+   MARCA — los mismos tokens que el CRM de MOED
+   ------------------------------------------------------------
+   Crema #F4ECE0 (el color oficial del logotipo), la tinta negra
+   del logotipo y arenas derivadas del mismo crema. Bodoni Moda
+   (la didona del logotipo) para titulos y Jost (la de la bajada
+   «WEDDING & EVENTS») para texto y cifras.
+
+   El sitio y el CRM deben sentirse de la misma casa: si cambia la
+   marca, se cambia aqui y en interfaz/src/estilos/tokens.css.
+   ============================================================ */
+
+:root {
+  --crema:        #F4ECE0;
+  --crema-clara:  #F8F2E9;
+  --crema-papel:  #FCF9F4;
+  --crema-borde:  #E7DDCD;
+
+  --arena:        #E2D2BA;
+  --arena-media:  #CBB596;
+  --arena-honda:  #9F8665;
+  --arena-velo:   #F2E8D9;
+
+  --tinta:        #121110;
+  --tinta-suave:  #2F2A25;
+  --tinta-tenue:  #6C6257;
+  --tinta-fantasma: #A39787;
+  --espresso:     #4B3E31;
+
+  --f-titulo: 'Bodoni Moda', 'Bodoni 72', 'Didot', 'Times New Roman', serif;
+  --f-texto:  'Jost', 'Futura', 'Century Gothic', -apple-system, 'Segoe UI', sans-serif;
+
+  /* Liquid Glass claro, igual que en el CRM */
+  --vidrio:         rgba(255, 253, 249, .44);
+  --vidrio-fuerte:  rgba(255, 253, 249, .74);
+  --vidrio-oscuro:  rgba(18, 17, 16, .22);
+  --vidrio-borde:   rgba(255, 255, 255, .78);
+  --vidrio-canto:   rgba(75, 62, 49, .10);
+  --vidrio-brillo:
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    inset 0 -1px 0 rgba(255, 255, 255, .35),
+    inset 0 0 0 .5px rgba(255, 255, 255, .5);
+  --vidrio-sombra:
+    0 0 0 .5px var(--vidrio-canto),
+    0 18px 40px -18px rgba(75, 62, 49, .32),
+    0 2px 6px -2px rgba(75, 62, 49, .08);
+  --vidrio-lente:
+    inset 0 12px 16px -12px rgba(255, 255, 255, 1),
+    inset 0 -10px 14px -11px rgba(255, 255, 255, .8),
+    inset 10px 0 14px -12px rgba(255, 255, 255, .85),
+    inset -10px 0 14px -12px rgba(255, 255, 255, .85),
+    inset 7px -5px 16px -10px rgba(203, 181, 150, .65),
+    inset -7px 5px 16px -10px rgba(178, 127, 105, .38);
+
+  --muelle: cubic-bezier(.32, 1.45, .32, 1);
+  --suave: cubic-bezier(.22, 1, .36, 1);
+  --ancho: 1320px;
+  --margen: clamp(20px, 5vw, 64px);
+}

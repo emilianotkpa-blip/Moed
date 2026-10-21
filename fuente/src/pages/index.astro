@@ -1,0 +1,297 @@
+---
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import { ISOTIPO_VIEWBOX, LETRA_E } from '../data/logotipo.js';
+import { hero, intro, servicios, destinos, momentos, marquesina, proceso, testimonios, contacto } from '../data/contenido.js';
+
+const flecha = `<svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6h16M11 1l5 5-5 5"/></svg>`;
+const palabrasIntro = intro.texto.split(' ');
+---
+<Base>
+  {/* ================= Navegacion ================= */}
+  <header class="nav" data-nav>
+    <nav class="nav-enlaces" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#destinos">Destinos</a>
+      <a href="#momentos">Portafolio</a>
+    </nav>
+    <a class="nav-logo" href="#inicio" aria-label="MOËD, inicio"><Logo ancho={104} /></a>
+    <div class="nav-derecha">
+      <nav class="nav-enlaces" aria-label="Secundaria">
+        <a href="#proceso">Cómo trabajamos</a>
+      </nav>
+      <a class="nav-cita" href="#contacto" data-iman>Agenden una cita</a>
+      <button class="nav-menu" type="button" aria-label="Abrir menú" data-abre-menu>
+        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M0 1h20M6 11h14" /></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu-movil" data-menu>
+    <button class="menu-cerrar" type="button" aria-label="Cerrar menú" data-cierra-menu>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 1l14 14M15 1 1 15" /></svg>
+    </button>
+    <a href="#servicios">Servicios</a>
+    <a href="#destinos"><em>Destinos</em></a>
+    <a href="#momentos">Portafolio</a>
+    <a href="#proceso"><em>Cómo trabajamos</em></a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <main>
+    {/* ================= Hero ================= */}
+    <section class="hero" id="inicio" data-oscuro>
+      <div class="hero-foto" style={`background-image:url('${hero.foto}')`} role="img" aria-label="Pareja abrazada al atardecer" data-fondo></div>
+      <div class="hero-contenido contenedor">
+        <span class="rotulo rotulo-claro" data-hero-fade>{hero.rotulo}</span>
+        <h1 class="hero-titulo">
+          <span class="linea"><span>{hero.linea1}</span></span>
+          <span class="linea"><span><em>{hero.linea2}</em></span></span>
+        </h1>
+        <div class="hero-pie">
+          <p class="hero-bajada" data-hero-fade>{hero.bajada}</p>
+          <div class="hero-acciones" data-hero-fade>
+            <a class="boton" href="#contacto" data-iman>Agenden una cita <Fragment set:html={flecha} /></a>
+            <a class="enlace-subrayado" href="#servicios">Ver servicios</a>
+          </div>
+        </div>
+      </div>
+      <span class="hero-vertical" data-hero-fade>Haciendas · Cenotes · Playas · Selva maya</span>
+      <span class="hero-bajar" aria-hidden="true"></span>
+      <div class="hero-curva" aria-hidden="true"></div>
+    </section>
+
+    {/* ================= Intro ================= */}
+    <section class="intro">
+      <div class="contenedor intro-rejilla">
+        <div>
+          <span class="rotulo" data-aparece>Nosotros</span>
+          <p class="intro-texto" data-palabras>
+            {palabrasIntro.map((p) => <span class="palabra">{p}&nbsp;</span>)}
+          </p>
+          <div class="intro-firma" data-aparece>
+            <span class="cursiva" style="font-size:22px">{intro.firma}</span>
+          </div>
+        </div>
+        <div class="intro-fotos" data-aparece>
+          <div class="sello" aria-hidden="true">
+            <svg class="texto-circular" viewBox="0 0 100 100">
+              <defs><path id="circulo" d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0" /></defs>
+              <text><textPath href="#circulo">Wedding &amp; Events · Valladolid · Yucatán ·</textPath></text>
+            </svg>
+            <svg viewBox={ISOTIPO_VIEWBOX} width="26" fill="currentColor"><path d={LETRA_E} /></svg>
+          </div>
+          <div class="arco intro-arco">
+            <img src={intro.foto} alt="Novia con su ramo" loading="lazy" data-parallax="0.12" />
+          </div>
+          <div class="redonda" data-parallax="-0.18">
+            <img src={intro.foto2} alt="Anillos de boda" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ================= Marquesina ================= */}
+    <div class="marquesina" aria-hidden="true">
+      <div class="marquesina-pista">
+        {[0, 1].map(() => (
+          <span>{marquesina.map((m) => <>{m}<i /></>)}</span>
+        ))}
+      </div>
+    </div>
+
+    {/* ================= Servicios ================= */}
+    <section class="servicios" id="servicios">
+      <div class="aurora-suave"></div>
+      <div class="contenedor">
+        <div class="seccion-cabeza">
+          <div>
+            <span class="rotulo" data-aparece>Servicios</span>
+            <h2 class="titulo-seccion" data-aparece>Tres maneras de <em>acompañarles</em></h2>
+          </div>
+          <p data-aparece>Cada pareja llega en un punto distinto de su planeación. Elegimos juntos cuánto les acompañamos.</p>
+        </div>
+        <div class="servicios-rejilla" data-escalon>
+          {servicios.map((s, i) => (
+            <article class="servicio" data-aparece data-inclina data-cursor="Ver">
+              <div class="servicio-foto"><img src={s.foto} alt={s.nombre} loading="lazy" /></div>
+              <div class="servicio-cuerpo">
+                <span class="servicio-num">0{i + 1}</span>
+                <h3>{s.nombre}</h3>
+                <p class="servicio-frase">{s.frase}</p>
+                <p>{s.texto}</p>
+                <ul>{s.incluye.map((x) => <li>{x}</li>)}</ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ================= Destinos ================= */}
+    <section class="destinos" id="destinos" data-oscuro data-destinos>
+      <div class="destinos-fijo">
+        <div class="destinos-cabeza contenedor">
+          <span class="rotulo rotulo-claro">Destinos</span>
+          <h2 class="titulo-seccion">Donde <em>sueñen</em> casarse</h2>
+        </div>
+        <div class="destinos-pista" data-pista>
+          {destinos.map((d) => (
+            <article class="destino" data-cursor="Ver">
+              <img src={d.foto} alt={d.nombre} loading="lazy" />
+              <div class="destino-texto">
+                <h3>{d.nombre}</h3>
+                <p>{d.nota}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="destinos-progreso"><i data-barra></i></div>
+      </div>
+    </section>
+
+    {/* ================= Momentos ================= */}
+    <section class="momentos" id="momentos">
+      <div class="contenedor">
+        <div class="seccion-cabeza">
+          <div>
+            <span class="rotulo" data-aparece>Portafolio</span>
+            <h2 class="titulo-seccion" data-aparece>Cada boda, <em>en momentos</em></h2>
+          </div>
+          <p data-aparece>De la primera mirada al último brindis. Fotografías de referencia mientras preparamos la galería de bodas MOËD.</p>
+        </div>
+        <div class="momentos-rejilla">
+          {momentos.map((m, i) => (
+            <div class="momento" data-aparece>
+              <h3 class="momento-nombre">{m.nombre}</h3>
+              <div class="momento-foto alta" data-cursor="Ver"><img src={m.fotos[0]} alt={`${m.nombre}`} loading="lazy" data-parallax={i % 2 ? '0.08' : '0.14'} /></div>
+              <div class="momento-foto baja" data-cursor="Ver"><img src={m.fotos[1]} alt={`${m.nombre}, detalle`} loading="lazy" data-parallax={i % 2 ? '0.14' : '0.06'} /></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ================= Proceso ================= */}
+    <section class="proceso" id="proceso">
+      <div class="contenedor" style="text-align:center">
+        <span class="rotulo" data-aparece>Cómo trabajamos</span>
+        <h2 class="titulo-seccion" data-aparece>Un año, <em>paso a paso</em></h2>
+      </div>
+      <div class="contenedor proceso-pasos" data-pasos>
+        <div class="proceso-linea" aria-hidden="true"><i data-linea></i></div>
+        {proceso.map((p, i) => (
+          <div class="paso" style="position:relative" data-aparece>
+            <span class="paso-punto" style="top:50%" aria-hidden="true"></span>
+            <div class="paso-lado"><span class="paso-num">0{i + 1}</span></div>
+            <div class="paso-lado">
+              <span class="rotulo">{p.cuando}</span>
+              <h3>{p.titulo}</h3>
+              <p>{p.texto}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* ================= Testimonios ================= */}
+    <section class="testimonios" data-oscuro data-testimonios>
+      <div class="contenedor">
+        <span class="rotulo">Testimonios</span>
+        <div class="testimonios-escena">
+          <div class="ovalo">
+            {testimonios.map((t, i) => (
+              <img src={t.foto} alt={`${t.pareja[0]} y ${t.pareja[1]}`} loading="lazy" data-diapo-foto style={i ? 'opacity:0' : ''} />
+            ))}
+          </div>
+          <div style="display:grid">
+            {testimonios.map((t, i) => (
+              <div data-diapo style={`grid-area:1/1;${i ? 'opacity:0;visibility:hidden' : ''}`}>
+                <p class="testimonio-texto">“{t.texto}”</p>
+                <p class="testimonio-pareja">{t.pareja[0]}<em>&amp;</em>{t.pareja[1]}</p>
+                <p class="rotulo testimonio-lugar">{t.lugar}</p>
+              </div>
+            ))}
+            <div class="testimonios-control">
+              <button class="flecha" type="button" aria-label="Anterior" data-anterior data-iman>
+                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M18 6H2M7 1 2 6l5 5" /></svg>
+              </button>
+              <button class="flecha" type="button" aria-label="Siguiente" data-siguiente data-iman>
+                <Fragment set:html={flecha} />
+              </button>
+              <div class="puntos">
+                {testimonios.map((_, i) => <button type="button" aria-label={`Testimonio ${i + 1}`} class={i ? '' : 'activo'} data-punto={i}></button>)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="nota-ejemplo">Testimonios de ejemplo</span>
+    </section>
+
+    {/* ================= Contacto ================= */}
+    <section class="contacto" id="contacto" data-oscuro>
+      <div class="contacto-foto" style={`background-image:url('${contacto.foto}')`} data-parallax-fondo data-fondo></div>
+      <div class="contenedor contacto-rejilla">
+        <div>
+          <span class="rotulo rotulo-claro" data-aparece>Contacto</span>
+          <h2 data-aparece>{contacto.titulo} <em>{contacto.cursiva}</em></h2>
+          <p class="contacto-texto" data-aparece>{contacto.texto}</p>
+        </div>
+        <div class="formulario" data-aparece data-formulario>
+          <form novalidate>
+            <div class="campos">
+              <div class="campo ancho"><label for="f-nombre">Sus nombres</label><input id="f-nombre" name="nombre" required placeholder="Ana & Luis" autocomplete="name" /></div>
+              <div class="campo"><label for="f-correo">Correo</label><input id="f-correo" name="correo" type="email" required placeholder="ustedes@correo.com" autocomplete="email" /></div>
+              <div class="campo"><label for="f-tel">WhatsApp</label><input id="f-tel" name="telefono" inputmode="tel" placeholder="985 123 4567" autocomplete="tel" /></div>
+              <div class="campo"><label for="f-fecha">Fecha tentativa</label><input id="f-fecha" name="fecha" type="date" /></div>
+              <div class="campo"><label for="f-inv">Invitados</label><input id="f-inv" name="invitados" type="number" min="0" placeholder="120" /></div>
+              <div class="campo"><label for="f-destino">Destino</label>
+                <select id="f-destino" name="destino">
+                  <option>Valladolid</option><option>Mérida</option><option>Riviera Maya</option><option>Bacalar</option><option>Aún no sabemos</option>
+                </select>
+              </div>
+              <div class="campo"><label for="f-serv">Servicio</label>
+                <select id="f-serv" name="servicio">
+                  <option>Coordinación Integral</option><option>Boda Destino</option><option>Coordinación Personalizada</option><option>Aún no sabemos</option>
+                </select>
+              </div>
+              <div class="campo ancho"><label for="f-msg">Cuéntennos de su boda</label><textarea id="f-msg" name="mensaje" placeholder="Lo que sueñan, lo que no quieren…"></textarea></div>
+              <div class="trampa" aria-hidden="true"><label>No llenar<input name="sitio_web" tabindex="-1" autocomplete="off" /></label></div>
+            </div>
+            <button class="boton boton-tinta" type="submit" data-iman>Enviar <Fragment set:html={flecha} /></button>
+            <p class="form-error" data-error></p>
+            <p class="form-pie">Al enviar, sus datos llegan directo a nuestro equipo.</p>
+          </form>
+          <div class="form-gracias">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="32" cy="32" r="30" opacity=".25" /><path pathLength="1" d="M19 33l9 9 17-19" /></svg>
+            <h3>¡Gracias, <em>de corazón</em>!</h3>
+            <p>Recibimos su mensaje. Les escribimos en menos de 24 horas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {/* ================= Pie ================= */}
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie-arriba">
+        <div>
+          <span class="rotulo">MOËD · Wedding &amp; Events</span>
+          <p>Wedding planners en Valladolid, Yucatán. Bodas destino en haciendas, cenotes y playas del sureste mexicano.</p>
+        </div>
+        <div><h4>Navegar</h4><ul><li><a href="#servicios">Servicios</a></li><li><a href="#destinos">Destinos</a></li><li><a href="#momentos">Portafolio</a></li><li><a href="#proceso">Cómo trabajamos</a></li></ul></div>
+        <div><h4>Destinos</h4><ul><li>Valladolid</li><li>Mérida</li><li>Riviera Maya</li><li>Bacalar</li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="#contacto">Agenden una cita</a></li><li>Instagram @moed.wedding</li><li>Valladolid, Yucatán</li></ul></div>
+      </div>
+      <div class="pie-logo" data-aparece><Logo ancho="100%" /></div>
+      <div class="pie-abajo"><span>© 2026 MOËD · Wedding &amp; Events</span><span>Hecho con calma en Yucatán</span></div>
+    </div>
+  </footer>
+</Base>
+
+<script>
+  import '../scripts/movimiento.js';
+  import '../scripts/contacto.js';
+</script>

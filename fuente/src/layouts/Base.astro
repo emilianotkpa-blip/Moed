@@ -1,0 +1,94 @@
+---
+import Logo from '../components/Logo.astro';
+import '../styles/tokens.css';
+import '../styles/sitio.css';
+
+interface Props { titulo?: string; descripcion?: string }
+const {
+  titulo = 'MOËD · Wedding & Events · Wedding planners en Valladolid, Yucatán',
+  descripcion = 'Diseñamos y coordinamos bodas destino en haciendas, cenotes y playas del sureste mexicano.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#F4ECE0" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    {/* Antes de pintar: si hay movimiento permitido, lo que se anima empieza
+        oculto (.animado). Sin JS o con «reducir movimiento», todo se ve.
+        Con ?edit=1 (modo edicion) la pagina se queda QUIETA: nada a medio
+        aparecer, nada moviendose mientras se edita. */}
+    <script is:inline>
+      (function () {
+        var r = document.documentElement;
+        if (/[?&]edit(=|&|$)/.test(location.search)) r.classList.add('editando', 'quieto');
+        else r.classList.add(matchMedia('(prefers-reduced-motion: reduce)').matches ? 'quieto' : 'animado');
+      })();
+    </script>
+  </head>
+  <body>
+    {/* Portada de arranque: la misma del CRM. MOËD se traza una vez y la
+        portada se va cuando la ultima letra termina de llenarse de negro. */}
+    <div id="portada" aria-hidden="true">
+      <Logo ancho={180} trazo />
+      <span class="portada-rotulo">Wedding &amp; Events</span>
+    </div>
+
+    <slot />
+
+    <div class="cursor" aria-hidden="true"></div>
+
+    <script is:inline>
+      (function () {
+        var p = document.getElementById('portada');
+        if (!p) return;
+        // Al editar no hay portada que esperar
+        if (document.documentElement.classList.contains('editando')) {
+          p.remove();
+          window.__portadaFuera = true;
+          return;
+        }
+        var ultima = p.querySelector('.t3');
+        var cerrado = false;
+        function cierra() {
+          if (cerrado) return;
+          cerrado = true;
+          setTimeout(function () {
+            p.classList.add('fuera');
+            window.__portadaFuera = true;
+            window.dispatchEvent(new Event('moed:portada'));
+            setTimeout(function () { p.remove(); }, 800);
+          }, 240);
+        }
+        var corre = ultima && ultima.getAnimations && ultima.getAnimations().some(function (a) {
+          return a.animationName === 'portadaTinta' && a.playState === 'running';
+        });
+        if (!corre) { cierra(); return; }
+        ultima.addEventListener('animationend', function (e) { if (e.animationName === 'portadaTinta') cierra(); });
+        setTimeout(cierra, 4000);
+      })();
+    </script>
+
+    {/* El editor (public/editor.js) solo se descarga en modo edicion */}
+    <script is:inline>
+      if (document.documentElement.classList.contains('editando')) {
+        var ed = document.createElement('script');
+        ed.src = '/editor.js';
+        document.body.appendChild(ed);
+      }
+    </script>
+  </body>
+</html>

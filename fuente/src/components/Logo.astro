@@ -1,0 +1,25 @@
+---
+/* El logotipo MOËD vectorizado del original (las mismas rutas que usa el
+   CRM, en data/logotipo.js). Hereda el color del contexto.
+   Con `trazo`, cada letra lleva la clase para dibujarse en la portada. */
+import { LETRAS, LOGO_VIEWBOX, LOGO_PROPORCION } from '../data/logotipo.js';
+
+interface Props { ancho?: number | string; trazo?: boolean; clase?: string }
+const { ancho = 120, trazo = false, clase = '' } = Astro.props;
+const alto = typeof ancho === 'number' ? Math.round(ancho * LOGO_PROPORCION) : undefined;
+---
+<svg
+  viewBox={LOGO_VIEWBOX}
+  width={ancho}
+  height={alto}
+  class={clase}
+  fill="currentColor"
+  role="img"
+  aria-label="MOËD"
+>
+  {LETRAS.map((l, i) => (
+    trazo
+      ? <path class={`tinta t${i}`} pathLength="1" d={l.d} />
+      : <path d={l.d} />
+  ))}
+</svg>
